@@ -1,0 +1,16 @@
+commit: Sign in
+
+authenticity_token: TxxSQ7aQSfgOmuYDunfr/OU+q00Jsw7MvJqsnhLUyS5Gh0xVD5kaxuqtkaEygLI135MwWaC+AJ2Z2y7q3V2WvQ==
+
+ga_id: 1252656192.1584681210
+login: wsy8718@163.com
+password: wsygit8718
+webauthn-support: supported
+webauthn-iuvpaa-support: unsupported
+return_to: 
+required_field_2977: 
+timestamp: 1600779551844
+timestamp_secret: 9860d5fae25073a1f667a0b0aedcf7bc6097a6405357c18697e133e908dccf4c
+
+
+<a data-hovercard-type="user" data-hovercard-url="/users/521xueweihan/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" data-hydro-click="{&quot;event_type&quot;:&quot;news_feed.event.click&quot;,&quot;payload&quot;:{&quot;event&quot;:{&quot;repo_id&quot;:194469741,&quot;actor_id&quot;:8255800,&quot;public&quot;:true,&quot;type&quot;:&quot;WatchEvent&quot;,&quot;target_id&quot;:null,&quot;id&quot;:13254707773,&quot;additional_details_shown&quot;:true,&quot;grouped&quot;:false},&quot;event_group&quot;:null,&quot;org_id&quot;:null,&quot;target_type&quot;:&quot;event&quot;,&quot;user_id&quot;:17688046,&quot;action_target&quot;:&quot;actor&quot;,&quot;originating_url&quot;:&quot;https://github.com/dashboard-feed&quot;}}" data-hydro-click-hmac="4745f2ea63c952dd0a80435f0f594ccbeb82bb9598cdea5514311a910c2ad3e0" data-ga-click="News feed, event click, Event click type:WatchEvent target:actor" class="link-gray-dark no-underline text-bold wb-break-all d-inline-block xh-highlight" href="/521xueweihan">521xueweihan</a>

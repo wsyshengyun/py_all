@@ -1,0 +1,15 @@
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9
+Cache-Control: max-age=0
+Connection: keep-alive
+Cookie: _octo=GH1.1.1557224485.1584339587; _ga=GA1.2.1252656192.1584681210; _device_id=4d2716e4498562c35987b27f5c611ec9; tz=Asia%2FShanghai; tz=Asia%2FShanghai; has_recent_activity=1; _gat=1; user_session=Fyp9Nnm9zWDMxmtBzWvNiBl-nrFVcaUosyu58OgEK3to2IGu; __Host-user_session_same_site=Fyp9Nnm9zWDMxmtBzWvNiBl-nrFVcaUosyu58OgEK3to2IGu; logged_in=yes; dotcom_user=wsyshengyun; _gh_sess=SxZOCsm%2Fs8bj4BmIJFALiLLRpkqeHKQUjmWXbz1io5n%2FwKIEdHY%2BkirF4GzEqIjZ57OHhdWe%2FBwwtuvQX%2BwDQejrToV%2B6R1RcpJcg4%2BAG22eY3SbncTIXpbiQwNIwcG01FY1ffxgaEsxihoKVQP8hWYqa8pZBT7Mfe8JYCrgng6NqMMbiraB0cV8kzFVbokz0kiuTiyKoOmXQ7B7Cz1GpWMOIS2JV2uNQeeH%2BDG3C66LThsbImeXAFmbDCpRWMiiFu32xyAMbXiRLMcj57KqFiazpq7w8epg5DhW15nlJCFbJyH0kuNeEWkIzFiPPoGWSXzfNDxFySqKuKEU01r3YzlYKQP3anCuqq90yWPntx%2FrXhEk0qRqllWWpAO7yhuSm0Tn3yj1Sqam9K32RoRAap%2BuobkmcIiWk4zF7zSray5cKfA5kbauf5bCW0MzOSy4V0lwwphTfTvedP2NSKtgVQA7YZdN8WEvhpUqPxFybT4lUKtZwmI%2FPzoKRa%2BMrjnhCASs3X8kqzuaZpX6z40uPbBa4kfVpr8Ah9J2pNcqztmslAivUn0qylx81VCy5Jy5P3pPfF%2BAHIW8v8n2yM4aMsNMMkxzypF8TLIfYH14LIQd1TiZqnV1Q6Y4uRbqviG5ih4qppSZODHoSWYe9rHBRfl%2B%2Bo6hYh88NXSdSXSNgyOakFTtN5RiHHM9ChFm%2B2tlvHse9Ij19bBY6jGr7R9cy%2BSJOlcOoR4ms%2FBuUE0nKO9yQ%2Bi9TP9zIV0BbjXNiOhAOxU9Y2xlh5aCoyQOBfbNtkPVNNhk2o38FNdNJNbgoCel2UJjN%2FhM0QGD6kOnUdmLQh2abFA3DR9SwnwjnZz8eeZIDIRz6IRcEnZwvY2eJiEfAwDTAjj4WBPth5PuHb3FtqeDLjULlkvR2EBO--uF4UAhWJct4HKqI6--xfmHuY7AkvUAbR41X7sorA%3D%3D
+Host: github.com
+If-None-Match: W/"3223c9e96b8981ba325d0bebd0f54def"
+Referer: https://github.com/login?return_to=%2Fjoin
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
