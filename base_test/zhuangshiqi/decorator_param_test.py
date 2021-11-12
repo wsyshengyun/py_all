@@ -2,7 +2,7 @@
 
 
 '''
-´ø²ÎÊýµÄvim   
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vim   
 
 '''
 
@@ -20,11 +20,11 @@ def log_with_param(text):
         return wrapper
 
     return decorator
-    
+
 @log_with_param("param")
 def test_with_param(p):
     print(test_with_param.__name__)
 
-
-test_with_param("WangShengYun")
+if __name__ == '__main__':
+    test_with_param("WangShengYun")
 
