@@ -1,5 +1,6 @@
 # coding:utf8 
 
+from functools import wraps 
 import time , functools 
 
 class DelayFunc:
@@ -51,9 +52,7 @@ class User:
         self.name = name 
 
 
-# =================================================
 # ====================wraps装饰器=============================
-from functools import wraps 
 def wrapper(func):
     @wraps(func)
     def inner_functions():

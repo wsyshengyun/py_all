@@ -36,18 +36,26 @@ def poo():
 poo()
 
 #=====================================类装饰器=======================================
+# 不带参数的装饰品
+# 类的成员为函数名， __call__函数的参数为被装饰的函数的参数 *args, **kwargs 
+# 被装饰的函数变成了类对象了？？？ 
 class A:
-    def __init__(self) -> None:
+    def __init__(self, func) -> None:
+        self.func = func
         pass
         
-    def __call__(self, func):
-        @functools.wraps
-        def _inner(*args, **kwargs):
-            print("is class decorator start")
-            func(*args, **kwargs)
-        return _inner 
+    def __call__(self,*args, **kwargs):
+        print("is class decorator start")
+        self.func(*args, **kwargs)
 
+@A
+def fun():
+    print("nihao")
 
+print("func=========")
+fun()
+print("fun的type是： {}".format(type(fun)))
+print("")
 #=====================================类装饰器带参数=======================================
 class At:
     def __init__(self, level) -> None:
