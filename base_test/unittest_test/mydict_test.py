@@ -15,6 +15,7 @@ class TestDict(unittest.TestCase):
     def setUp(self) -> None:
         """ 可以在单元测试中编写两个特殊的setUp()和tearDown()方法。这两个方法会分别在每调用一个测试方法的前后分别被执行。 """
         print("setUp...") 
+        self.dict = Dict()
         # return super().setUp()
 
     def tearDown(self) -> None:
@@ -22,31 +23,28 @@ class TestDict(unittest.TestCase):
         # return super().tearDown()
     
     def test_init(self):
-        d = Dict(a=1, b='test')
-        self.assertEqual(d.a, 1)
-        self.assertEqual(d.b, 'test')
-        self.assertTrue(isinstance(d, dict))
+        # self.dict = Dict(a=1, b='test')
+        self.dict.update({'a':1, 'b':'test'})
+        self.assertEqual(self.dict.a, 1)
+        self.assertEqual(self.dict.b, 'test')
+        self.assertTrue(isinstance(self.dict, dict))
     
     def test_key(self):
-        d = Dict()
-        d['key'] = 'value'
-        self.assertEqual(d.key, 'value')
+        self.dict['key'] = 'value'
+        self.assertEqual(self.dict.key, 'value')
     
     def test_attr(self):
-        d = Dict()
-        d.key = 'value'
-        self.assertTrue('key' in d)
-        self.assertEqual(d['key'], 'value')
+        self.dict.key = 'value'
+        self.assertTrue('key' in self.dict)
+        self.assertEqual(self.dict['key'], 'value')
     
     def test_keyerror(self):
-        d = Dict()
         with self.assertRaises(KeyError):
-            value = d['empty']
+            value = self.dict['empty']
     
     def test_attrerror(self):
-        d = Dict()
         with self.assertRaises(AttributeError):
-            value = d.empty
+            value = self.dict.empty
 
         
 if __name__ == '__main__':
