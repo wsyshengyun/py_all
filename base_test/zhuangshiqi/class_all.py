@@ -190,6 +190,7 @@ print()
 print("test  param class-decorator")
 print(test_class_param_on(4,5))
 # print(test_class_param_on2(5,6))
+print(Foo('sssssssss')(test_class_param_on)(5,6))  # 装饰器等价调用
 
 
 
