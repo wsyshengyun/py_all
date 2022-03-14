@@ -7,6 +7,9 @@
 import threading
 
 import time 
+from ..logger.log import logger
+
+logger.info(__name__)
 
 def pring_age(who, age):
     print("hello every one")

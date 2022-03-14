@@ -1,5 +1,5 @@
 import logging
-path_log = "Log/log1.log"
+path_log = "log/log.log"
 level = logging.INFO
 logging.basicConfig(level=level
         , format= '%(asctime)s - %(name)s - %(levelname)s : %(message)s'
