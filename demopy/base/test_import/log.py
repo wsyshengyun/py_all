@@ -1,10 +1,5 @@
-# coding:utf8
-
-
 import logging
-
-
-path_log = "log/log.log"
+path_log = "Log/log1.log"
 level = logging.INFO
 logging.basicConfig(level=level
         , format= '%(asctime)s - %(name)s - %(levelname)s : %(message)s'
@@ -12,7 +7,3 @@ logging.basicConfig(level=level
         , datefmt= '%Y/%m/%d %H:%M:%S'
          )
 logger = logging.getLogger(__name__)
-
-
-# def getLogger():
-#     return logger

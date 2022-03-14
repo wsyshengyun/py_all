@@ -12,7 +12,8 @@ from logging import Handler, FileHandler, StreamHandler
 
 class PathFileHandler(FileHandler):
     def __init__(self,path, filename, mode='a', encoding=None, delay=False):
-        filename = os.fspath(filename)
+        # filename = os.fspath(filename)
+        filename = os.path.join(path,filename)
         if not os.path.exists(filename):
             os.mkdir(path)
         self.baseFilename = os.path.join(path, filename)
@@ -27,6 +28,9 @@ class PathFileHandler(FileHandler):
 
 
 class Loggers(object):
+    """ 
+    uuid 在不停的变，每次运行一次就改变一次，造成运行一次就会创建一个新的名字。
+    """
     #日志级别关系的映射
     level_relations = {
         'debug':logging.DEBUG, 
@@ -39,6 +43,7 @@ class Loggers(object):
     def __init__(self, filename='{uid}.log'.format(uid=uuid.uuid4()),
                 level='info', log_dir='log'
                 ,fmt='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s'):
+
         self.logger = logging.getLogger(filename)
         abspath = os.path.dirname(os.path.abspath(__file__))
         self.directory = os.path.join(abspath, log_dir)

@@ -11,6 +11,7 @@ from ..logger.log import logger
 
 logger.info(__name__)
 
+
 def pring_age(who, age):
     print("hello every one")
     time.sleep(1)
@@ -55,4 +56,6 @@ def main_print_run():
     print_run('lrf')
     print_run('wlh')
     pass
+
+
 main_print_run()
