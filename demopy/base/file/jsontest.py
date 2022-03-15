@@ -33,7 +33,6 @@ user_dic = json.loads(content)
 f.close() 
 
 
-
 #=====================================load方法 =======================================
 print('*'*50)
 f= open(path, encoding='utf-8')
