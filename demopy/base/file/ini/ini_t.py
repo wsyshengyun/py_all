@@ -72,39 +72,70 @@ class MyConfigIni(object):
         self.logger.info("path : {}".format(self.path))
         pass
 
+
+    def conf(self):
+        return self.conf
+    
+    
     def read(self):
         self.conf.read(self.path, encoding='utf-8')
 
     def get_sections(self):
         return self.conf.sections()
     
-    def write(self):
-        self.conf.write(open(self.path, 'w', encoding='utf8'))
+    def write(self, mode = 'w'):
+        self.conf.write(open(self.path, mode, encoding='utf8'))
     
 
     def add_section(self, sec):
-        self.conf.add_section(sec)
+        """ 添加section，添加前检查 """
+        if self.conf.has_section(sec):
+            self.logger.info("add {} is failed, section is exists!".format(sec))
+        else:
+            self.conf.add_section(sec)
+            self.write()
         pass
 
-    def add_key_value(self, sec, key, value):
-        sections = self.get_sections()
-        if sec not in sections:
-            self.logger.debug("section [{}] is not exists".format(sec))
-            self.add_section(sec)
+    def remove_section(self, sec):
+        """ 删除section """
+        if self.conf.has_section(sec):
+            self.conf.remove_section(sec)
+            self.write()
+        else:
+            self.logger.warn("remove {sec} is failed! section is not exists! ".format(sec))
+
+    def add_option(self, sec, option, value):
+        """ add option """
+        if not self.conf.has_option(sec, option):
+            self.conf.set(sec, option, value)
+            self.write()
+        else:
+            self.logger.warn("add option: {} is failed, this is exists!".format(option))
+
+        
         self.conf.set(sec, key, value)
     
-    def remove_option(self, sec, key):
-        self.conf.remove_option(sec, key)
-        pass
+    def remove_option(self, sec, option):
+        """ remove option """
+        if self.conf.has_option(sec, option):
+            flg = self.conf.remove_option(sec, option)
+            self.write()
+            self.logger.info("remove option:{} is success, return value is {}".format(option, flg))
+        else:
+            self.logger.warn("remove {} is failed, this option is not exists!".format(option))
 
-    def remove_section(self,sec):
-        self.conf.remove_section(sec)
+    
+    def modify_value(self, sec, option, value):
+        self.conf.set(sec, option,value=value)
+        self.write(mode='r+')
 
 
     def print_sections(self):
+        """ logging sections """
         self.logger.info("所有的字段：{}".format(self.conf.sections()))
         
     def print_all_items(self):
+        """ logging items """
         sections = self.get_sections()
         self.logger.info(sections)
         for sec in sections:
@@ -119,9 +150,14 @@ class MyConfigIni(object):
 def test():
     obj = MyConfigIni(cfgpath, logger=logger)
     obj.read()
-    obj.add_key_value('company', 'name2', 'szxd2')
-    obj.write()
-    obj.print_all_items()
+    # obj.add_section("Sheng")
+    # obj.add_option('Sheng', 'xiancheng1', "xinye")
+    # obj.modify_value("Sheng", 'xiancheng1', 'xindianpu')
+    # obj.add_section("SHI")
+    # obj.add_option("SHI", "xiancheng2", 'xinye')
+    # obj.remove_section('SHI')
+    obj.remove_option("Sheng", 'xiancheng1')
+
     pass
 
 test()
