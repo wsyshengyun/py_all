@@ -55,6 +55,21 @@ class Loggers(object):
         file_handler.setFormatter(format_str)
         self.logger.addHandler(stream_handler)
         self.logger.addHandler(file_handler)
+        
+        
+# -----------------------------------------------------------
+# logging -- file 
+# 按照文件大小分割log大小，超过设定的size就会自动创建一个新的文件
+# -----------------------------------------------------------
+
+
+
+# -----------------------------------------------------------
+# Logging - time
+# 按照时间分割文件， 超过规定的time就会新建一个log文件
+# -----------------------------------------------------------
+
+
 
 if __name__ == '__main__':
     txt = 'nihao'
