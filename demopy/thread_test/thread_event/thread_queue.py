@@ -26,28 +26,18 @@ class myThread (threading.Thread):
         logger.info("%s is end" % self.name)
 
 def process_data(threadName, q):
-    while not exitFlag:
+    # while not exitFlag:
+    while not workQueue.empty():
         queueLock.acquire()
-        if not workQueue.empty():
-            data = q.get()
-            queueLock.release()
-            logger.info("线程名字：%s ,put data =  %s" % (threadName, data))
-        else:
-            queueLock.release()
+        data = q.get()
+        queueLock.release()
+        logger.info("线程名字：%s ,put data =  %s" % (threadName, data))
         time.sleep(1)
+    # else:
+        # queueLock.release()
 
-threadList = ["T1", "T2", "T3"]
 queueLock = threading.Lock()
 workQueue = queue.Queue(10)
-
-# 创建新线程
-threads = []
-threadID = 1
-for tName in threadList:
-    thread = myThread(threadID, tName, workQueue)
-    thread.start()
-    threads.append(thread)
-    threadID += 1
 
 # 填充队列
 nameList = ["One", "Two", "Three", "Four", "Five"]
@@ -57,12 +47,27 @@ for word in nameList:
     logger.info("{} is ==> queue".format(word))
 queueLock.release()
 
+
+# 创建新线程
+threads = []
+threadList = ["T1", "T2", "T3"]
+th_id = 1
+for tName in threadList:
+    th = myThread(th_id, tName, workQueue)
+    threads.append(th)
+    th_id += 1
+
+    th.setDaemon(True)
+    th.start()
+
+
+
 # 等待队列清空
-while not workQueue.empty():
-    pass
+# while not workQueue.empty():
+    # pass
 
 # 通知线程是时候退出
-exitFlag = 1
+# exitFlag = 1
 
 # 等待所有线程完成
 for t in threads:
