@@ -9,16 +9,16 @@ import threading
 import time 
 from ..logger.log import logger
 
-logger.info(__name__)
+logger.info("in t1.py——")
 
 
 def pring_age(who, age):
-    print("hello every one")
+    logger.info("hello every one")
     time.sleep(1)
-    print("{} age is {}\n".format(who, age)) 
+    logger.info("{} age is {}\n".format(who, age)) 
 
 def print_run(who):
-    print("{} is run...".format(who))
+    logger.info("{} is run...".format(who))
     time.sleep(3)
 
 class Mythread(threading.Thread):
@@ -27,17 +27,17 @@ class Mythread(threading.Thread):
         self.name = who
 
     def run(self) -> None:
-        print("{} is runing...\n".format(self.name))
+        logger.info("{} is runing...\n".format(self.name))
         time.sleep(3)
 
-def main_class():
+def test_mythread():
     th_obj1 = Mythread('wsy')
     th_obj2 = Mythread('lrf')
     th_obj3 = Mythread('wlh')
     th_obj1.start()
     th_obj2.start()
     th_obj3.start()
-    print("over.....\n")
+    logger.info("over.....\n")
 
     pass
 def main():
@@ -48,7 +48,7 @@ def main():
     th1.start()
     th2.start()
     th3.start()
-    print("times is {}".format(time.time() - t1))
+    logger.info("times is {}".format(time.time() - t1))
     pass
 
 def main_print_run():
