@@ -5,4 +5,6 @@
 # from demopy.thread_test import th_number
 # from demopy.thread_test.thread1 import thread_one
 # from demopy.thread_test.thread_event import test_boundedSemaphore
-from demopy.thread_test.thread_event import light
+# from demopy.thread_test.thread_event import light
+# from demopy.pachong_test.selenium_test import nihao
+from demopy.pyqt_test import test_q

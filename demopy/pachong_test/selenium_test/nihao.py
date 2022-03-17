@@ -1,37 +1,36 @@
 ﻿# import selenium 
 import time 
 from selenium import webdriver
-from ip.pack.log import logger
 # from selenium.webdriver.common.keys import Keys 
-
-# options = webdriver.ChromeOptions()
-# options.binary_location = r'C:\Users\w3986\AppData\Local\Google\Chrome\Application\chrome.exe --profile-directory="Default"'
-# driver = webdriver.Chrome(chrome_options=options)
+from ...logger.log import logger
 
 
 url = 'https://www.baidu.com'
-
-# path = "d:\python\chromedriver_win32\chromedriver.exe"
-# driver = webdriver.Chrome(path)
-
 path = "d:\python\edgedriver_win64\msedgedriver.exe"
-driver = webdriver.Edge(path)
-driver.get(url)
-logger.info("url is open :  % s" % url)
 
-time.sleep(5)
-# driver.quit()
-# logger.info("chrome driver is quit")
+class MySelenium(object):
+    def __init__(self, path, url):
+        self.driver_path = path
+        self.url = url
+        self.init()
+        pass
+    
+    
+    def init(self):
+        self.driver = webdriver.Edge(self.driver_path)
+        self.driver.get(self.url)
+        logger.info('url {} is open.'.format(self.url))
 
-
-def test_find():
-   element =  driver.find_element_by_link_text("新闻")
-   logger.info("element is %s" % element) 
-   logger.info("element type is %s" % type(element))
-   if element:
-       logger.info("element is click")
-       element.click()
+    def test_find(self):
+        element = self.driver.find_element_by_link_text("新闻")
+        logger.info("type 新闻 element is :{}".format(type(element)))
+        if element:
+            element.click()
 
        
-test_find()
 
+def test():
+   obj = MySelenium(path, url) 
+   obj.test_find()
+
+# test()
