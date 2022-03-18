@@ -7,4 +7,10 @@
 # from demopy.thread_test.thread_event import test_boundedSemaphore
 # from demopy.thread_test.thread_event import light
 # from demopy.pachong_test.selenium_test import nihao
-from demopy.pyqt_test import test_q
+# from demopy.pyqt_test import test_q
+# from demopy.pyqt_test.base.dialog_color import main
+# from demopy.pyqt_test.base.dialog_font import main
+from demopy.pyqt_test.base.dialog_file import main
+
+
+main()
