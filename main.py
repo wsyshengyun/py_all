@@ -10,7 +10,15 @@
 # from demopy.pyqt_test import test_q
 # from demopy.pyqt_test.base.dialog_color import main
 # from demopy.pyqt_test.base.dialog_font import main
-from demopy.pyqt_test.base.dialog_file import main
+# from demopy.pyqt_test.base.dialog_file import main
+# from demopy.pyqt_test.base.dialog_input import main
+# from demopy.pyqt_test.base.signal_1 import main
+# from demopy.pyqt_test.widgets.qcheckbox import main
+# from demopy.pyqt_test.widgets.qpushbutton import main
+# from demopy.pyqt_test.widgets.qslider import main
+# from demopy.pyqt_test.widgets.qprogressbar import main
+# from demopy.pyqt_test.widgets.qdrag_drop import main
+from demopy.pyqt_test.widgets.qdrag_drop2 import main
 
 
 main()
