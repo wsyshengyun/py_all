@@ -5,6 +5,9 @@
 '''
 
 import pymongo
+from ..logger.log import logger
+
+
 # 连接数据库
 # myclient = pymongo.MongoClient(host='127.0.0.1', port=27017)
 myclient = pymongo.MongoClient(host='localhost', port=27017)
@@ -93,9 +96,10 @@ find_2()
 # find_all_2()
 
 
-
-
-
+def main():
+    
+    find_2() 
+    pass
 
 
 
