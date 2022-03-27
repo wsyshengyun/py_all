@@ -18,7 +18,28 @@
 # from demopy.pyqt_test.widgets.qslider import main
 # from demopy.pyqt_test.widgets.qprogressbar import main
 # from demopy.pyqt_test.widgets.qdrag_drop import main
-from demopy.pyqt_test.widgets.qdrag_drop2 import main
+# from demopy.pyqt_test.widgets.qdrag_drop2 import main
+# from demopy.mongodb_test.mongo_unittest import main
+import unittest , os 
+from demopy.logger.log import logger
+# main()
+logger.info('-' * 100)
 
 
-main()
+# from demopy.unittest_test import 
+
+# def run_test():
+    
+s = unittest.TestSuite()
+loader = unittest.TestLoader()
+
+# path = 'demopy/unittest_test'
+path = 'demopy/mongodb_test'
+# s.addTests(loader.discover(os.getcwd()))
+s.addTests(loader.discover(path))
+
+run = unittest.TextTestRunner()
+run.run(s)
+
+
+# run_test()

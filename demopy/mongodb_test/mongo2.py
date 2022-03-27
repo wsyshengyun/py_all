@@ -5,15 +5,16 @@
 '''
 
 import pymongo
-from ..logger.log import logger
+# from ..logger.log import logger
+from demopy.logger.log import logger
 
 
 
 # 连接数据库
 
 def connect():
-    # myclient = pymongo.MongoClient(host='127.0.0.1', port=27017)
     myclient = pymongo.MongoClient(host='localhost', port=27017)
+    # myclient = pymongo.MongoClient(host='127.0.0.1', port=27017)
     db = myclient['dbtest']   
     # db = myclient.dbtest
     my_set = db['t1']
@@ -34,7 +35,6 @@ users = [
 
 if flg_insert:
     my_set.insert_many(users)
-
 
 
 # search  
