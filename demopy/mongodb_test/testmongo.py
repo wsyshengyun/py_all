@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+`# -*- coding: utf-8 -*-
 '''
 @File    :   testmongo.py
 @Time    :   2020/10/22 11:12:14
@@ -8,7 +8,7 @@ import pymongo
 """ 连接pymongo服务 """
 from pymongo import MongoClient
 client = MongoClient() 
-
+
 
 """ 连接数据库 """
 
