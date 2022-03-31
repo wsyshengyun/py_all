@@ -61,13 +61,13 @@ class MyMongodbTest(unittest.TestCase):
         # logger.info("开始插入数据~")
         student = { 'id' : '20170101', 'name' : 'jordan', 'age' : 20, 'gender' : 'male' }
         sts =     [ { 'id' : '20170102', 'name' : 'wsy', 'age' : 30, 'gender' : 'women' },
+                    { 'id' : '20170108', 'name' : 'wudandan', 'age' : 35, 'gender' : 'woman' },
                     { 'id' : '20170103', 'name' : 'lrf', 'age' : 40, 'gender' : 'male' },
                     { 'id' : '20170104', 'name' : 'lx', 'age' : 50, 'gender' : 'male' },
+                    { 'id' : '20170109', 'name' : 'liuxiaojun', 'age' : 56, 'gender' : 'male' },
                     { 'id' : '20170105', 'name' : 'pdm', 'age' : 60, 'gender' : 'male' },
                     { 'id' : '20170106', 'name' : 'll', 'age' : 70, 'gender' : 'women' },
                     { 'id' : '20170107', 'name' : 'shuaige', 'age' : 80, 'gender' : 'male' },
-                    { 'id' : '20170108', 'name' : 'wudandan', 'age' : 35, 'gender' : 'woman' },
-                    { 'id' : '20170109', 'name' : 'liuxiaojun', 'age' : 56, 'gender' : 'male' },
             ]
         # result = self.collection.insert_one(student) 
         results = self.collection.insert_many(sts)
@@ -145,12 +145,23 @@ class MyMongodbTest(unittest.TestCase):
         
         results = self.collection.find({'age':{'$gt' : 40}})
         names = [objdit['name'] for objdit in list(results)]
-        names_age_gt_40 = ['lx', 'pdm', 'll', 'shuaige', 'liuxiaojun']
-        self.assertEqual(names, names_age_gt_40)
+        # names_age_gt_40 = ['lx', 'pdm', 'll', 'shuaige', 'liuxiaojun']
+        # self.assertEqual(names, names_age_gt_40)
 
         # for per in results:
             # logger.info("per = {}".format(per))
 
+
+    def test_find_many_fuhe(self):
+        
+        result = self.collection.find({'age':{'$lt':60}}, {'gender':'male'}) 
+        # logger.info("158 : {}".format(result.matched_count))
+        for obj in result:
+            logger.info("obj is :{}".format(obj))
+        pass
+        
+            
+    
     
     def test_update_name(self):
         result = self.collection.update_one({'name' : 'wsy'}, 
@@ -206,14 +217,13 @@ class MyMongodbTest(unittest.TestCase):
     
     def test_delete_filter(self):
         
-        # results = self.collection.delete_many({'age':{'$lt':80}})
-        # results = self.collection.delete_many({'age':{'$lte':30}})
-        results = self.collection.delete_many({'age':{'$gt':30}, 'ag':{'$lt': 80}})
+        results = self.collection.delete_many({'age': {'$gt':30, '$lt':70}})
         logger.info("210 results.deleted_count = {}".format(results.deleted_count))
-        # TODO 如何删除复合条件
+        # TODO 如何得到删除的对象,得到他们的id或者别的属性. 
         pass
         
-         
+    
+    
         
         
         
