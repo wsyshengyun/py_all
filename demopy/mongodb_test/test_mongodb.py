@@ -92,9 +92,21 @@ class MyMongodbTest(unittest.TestCase):
     def test_insert(self):
 
         self.assertEqual(self.collection.estimated_document_count(), 8)
+
         per = {'name':'liuqiangdong', 'age':44, 'gender':'male'}
         self.collection.insert_one(per)
+
         self.assertEqual(self.collection.estimated_document_count(), 9)
+
+        result = self.collection.find_one({'name':'liuqiangdong'})
+
+
+        logger.info("result = {}".format(result))
+
+
+
+
+
 
         
         pass
@@ -114,14 +126,16 @@ class MyMongodbTest(unittest.TestCase):
     
     def test_find(self):
 
-        result = self.collection.find()
+        result = self.collection.find({})
         len_ = len(list(result))
         self.assertEqual(len_, 8)
         pass
 
+
     def test_find_one(self):
         
         result = self.collection.find({'name':'wsy'})
+
         pass
         
         
@@ -177,6 +191,30 @@ class MyMongodbTest(unittest.TestCase):
 
 
         pass
+
+    
+    def test_delete_one(self):
+        
+        # result = self.collection.delete_one({})
+        # logger.info("199 result = {}".format(result.deleted_count))
+
+        result = self.collection.delete_one({'name':'liuqingd'})
+        logger.info("199 result = {}".format(result.deleted_count))
+        # TODO 如何判断删除成功
+        pass
+       
+    
+    def test_delete_filter(self):
+        
+        # results = self.collection.delete_many({'age':{'$lt':80}})
+        # results = self.collection.delete_many({'age':{'$lte':30}})
+        results = self.collection.delete_many({'age':{'$gt':30}, 'ag':{'$lt': 80}})
+        logger.info("210 results.deleted_count = {}".format(results.deleted_count))
+        # TODO 如何删除复合条件
+        pass
+        
+         
+        
         
         
         
