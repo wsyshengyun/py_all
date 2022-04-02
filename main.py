@@ -26,20 +26,12 @@ from demopy.logger.log import logger
 logger.info('-' * 100)
 
 
-# from demopy.unittest_test import 
 
-# def run_test():
-    
-s = unittest.TestSuite()
-loader = unittest.TestLoader()
+s = unittest.TestSuite() 
+loader = unittest.TestLoader() 
 
-# path = 'demopy/unittest_test'
-path = 'demopy/mongodb_test'
-# s.addTests(loader.discover(os.getcwd()))
+path = 'demopy/pachong_test/xpath_test'
 s.addTests(loader.discover(path))
 
-run = unittest.TextTestRunner()
+run = unittest.TextTestRunner() 
 run.run(s)
-
-
-# run_test()
