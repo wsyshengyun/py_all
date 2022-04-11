@@ -56,7 +56,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(D, {'a': 1, 'b': 2, 'c': 3, 'd': 5})
         self.assertEqual(result, None)
 
-        result = D.update({'d':5})
+        result = D.update({'d': 5})
         self.assertEqual(D, {'a': 1, 'b': 2, 'c': 3, 'd': 5})
         self.assertEqual(result, None)
 
@@ -96,12 +96,6 @@ class MyTestCase(unittest.TestCase):
 
     def test_some(self):
         self.assertEqual([(), ()], [(), ()])
-
-
-
-
-
-
 
 
 if __name__ == '__main__':
