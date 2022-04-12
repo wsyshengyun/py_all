@@ -16,14 +16,10 @@ class MyTestCase(unittest.TestCase):
         L = [1, 2, 3, 4, 5]
         _equal(L, self.L)
 
-        L = [None]*2
+        L = [None] * 2
         _equal(L, [None, None])
-        L = ['']*6
+        L = [''] * 6
         _equal(len(L), 6)
-
-
-
-
 
     def test_extend(self):
         _equal = self.assertEqual
@@ -38,8 +34,6 @@ class MyTestCase(unittest.TestCase):
         L2 = L + [9, 99]
         self.assertEqual(L2[-1], 99)
         self.assertEqual(L2[-2], 9)
-
-
 
     def test_clear(self):
         self.L.clear()
@@ -81,8 +75,9 @@ class MyTestCase(unittest.TestCase):
 
         L1 = L.copy()
         L.insert(len(L), 8)  # 末尾位置插入
-        L1.insert(len(L1)-1, 8)  # 末尾得前一个位置
-        self.assertNotEqual(L, L1)   # ==
+        L1.insert(len(L1) - 1, 8)  # 末尾得前一个位置
+        self.assertNotEqual(L, L1)  # ==
+
     #     如果要在一个元素的位置处插入数据,那么在他的索引处插入就可以了.
 
     def test_index(self):
@@ -118,7 +113,7 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(inx, inx_b)
 
             inx_find_ele = L.index(find_ele)
-            self.assertEqual(inx+1, inx_find_ele)
+            self.assertEqual(inx + 1, inx_find_ele)
         except ValueError:
             pass
 
@@ -132,7 +127,6 @@ class MyTestCase(unittest.TestCase):
         L = [1]
         L.insert(0, 2)  # return None
         self.assertEqual(L, [2, 1])
-
 
         pass
 
@@ -170,11 +164,6 @@ class MyTestCase(unittest.TestCase):
         L1 = L.copy()  # 支持深度copy
         self.assertEqual(L1[3], [5, 6])
         pass
-
-
-
-
-
 
 
 if __name__ == '__main__':
