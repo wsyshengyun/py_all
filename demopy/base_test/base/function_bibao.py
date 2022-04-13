@@ -11,6 +11,27 @@
 """
 
 
+def outer():
+    print("in outer")
+
+    def inner1():
+        print("in inner1")
+
+        def inner2():
+            print("in inner2")
+
+        return inner2
+
+    return inner1
+
+
+print('-' * 50)
+obj = outer()
+obj()()
+
+print('-' * 50)
+
+
 def outer(a):
     b = 10
 
@@ -26,21 +47,27 @@ demo()  # 15
 demo2 = outer(7)
 demo2()  # 17
 
+
 def outer(a):
     b = 10
     c = [a]
 
     def inner():
-        nonlocal b
+        nonlocal b, a
         b += 1
+        a += 1
 
         # 方法2 修改闭包变量
         c[0] += 1
         print(c[0])
         print("c[0] is {}".format(c[0]))
         print("b is {}".format(b))
-        print("as is {}".format(a))
+        print("a is {}".format(a))
+
     return inner
+
 
 bbf = outer(5)
 bbf()
+bbd = outer(9)
+bbd()
