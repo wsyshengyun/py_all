@@ -165,6 +165,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(L1[3], [5, 6])
         pass
 
+    def test_qiepian(self):
+        # 切片的操作
+
+        pass
+
+
 
 if __name__ == '__main__':
     unittest.main()
