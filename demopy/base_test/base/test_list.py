@@ -167,6 +167,25 @@ class MyTestCase(unittest.TestCase):
 
     def test_qiepian(self):
         # 切片的操作
+        self.L.extend([6, 7])
+        self.L.insert(0, 0)
+        L = self.L.copy()
+        self.assertEqual(L, [0, 1, 2, 3, 4,5, 6, 7])
+        self.assertEqual(L[1:3], [1, 2])
+        self.assertEqual(L[0:1], [0])
+        self.assertEqual(L[:2], [0, 1])  # 不包括终点
+        self.assertEqual(L[5:], [5, 6, 7])  # 包括起点
+
+        self.assertEqual(L[::], L)  # 复制全列表
+        self.assertEqual(L[::1], L)  # 步长为1, 即为复制全列表
+        self.assertEqual(L[::5], [0, 5])  # 0开始,步长为5
+        self.assertEqual(L[::2], [0, 2, 4, 6])  # 0开始, 步长为2
+        self.assertEqual(L[1::2], [1, 3, 5, 7])  # 1开始, 步长为2
+        self.assertEqual(L[1:6:2], [1, 3, 5])  # 从1开始,不超过6, 步长为2
+
+        self.assertEqual(L[::-1], [7, 6, 5, 4, 3, 2, 1, 0])  # 步长为-1, 即为倒序
+        self.assertEqual(L[6:0:-2], [6, 4, 2])  # 6开始, 到0不包括0, 步长为-2
+
 
         pass
 
