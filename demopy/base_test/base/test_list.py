@@ -175,6 +175,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(L[0:1], [0])
         self.assertEqual(L[:2], [0, 1])  # 不包括终点
         self.assertEqual(L[5:], [5, 6, 7])  # 包括起点
+        self.assertEqual(L[5: len(L)], L[5:])
+        self.assertEqual(L[:], L)
+        # 负数切片
+        self.assertEqual(L[-3:], [5, 6, 7])
+        self.assertEqual(L[5:-1], [5, 6])
+        self.assertEqual(L[-3:-1], [5, 6])
 
         self.assertEqual(L[::], L)  # 复制全列表
         self.assertEqual(L[::1], L)  # 步长为1, 即为复制全列表
@@ -185,6 +191,37 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(L[::-1], [7, 6, 5, 4, 3, 2, 1, 0])  # 步长为-1, 即为倒序
         self.assertEqual(L[6:0:-2], [6, 4, 2])  # 6开始, 到0不包括0, 步长为-2
+
+        # 切片元素的个数
+        # L[a:b] : 切片元素的个数等于 b-a
+
+        # 切片的应用之 切片出现在等号的左边, 可能会改变原列表的长度
+        self.assertEqual(L, [0, 1, 2, 3, 4, 5, 6, 7])
+        L1 = L.copy()
+        # 元素减少
+        # 2到7的元素用右边类别代替; 不包括7位置的数;
+        L[2:7] = [99, 22, 14]
+        self.assertEqual(L, [0, 1, 99, 22, 14, 7])
+
+        # 元素增加
+        L = L1
+        L[2:3] = [22, 33]
+        self.assertEqual(L, [0, 1, 22, 33, 3, 4, 5, 6, 7])
+
+        # 如果出现在右边,等于是给这个列表做副本,虽然相同,但是身份不同
+        b = L[:]
+        self.assertNotEqual(id(b), id(L))
+
+        # 用不在起止下标的切片放在赋值符号的左边,表示是用右边的那个列表的副本
+        # 把左侧列表的全部内容替换掉(注意左边的列表依然保留原来的身份,系统不会分配新的列表)
+        a = [1, 2, 3, 4, 5, 6]
+        b = a
+        a[:] = [101, 102, 103]
+        self.assertTrue(a is b )
+        self.assertEqual(a, [101, 102, 103])
+
+
+
 
 
 if __name__ == '__main__':
