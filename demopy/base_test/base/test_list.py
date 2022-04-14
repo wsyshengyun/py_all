@@ -187,9 +187,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(L[6:0:-2], [6, 4, 2])  # 6开始, 到0不包括0, 步长为-2
 
 
-        pass
-
-
-
 if __name__ == '__main__':
     unittest.main()

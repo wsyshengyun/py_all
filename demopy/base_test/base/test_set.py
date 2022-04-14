@@ -55,7 +55,7 @@ class MyTestCase(unittest.TestCase):
         set3 = set1.intersection(set2)
         self.assertEqual(set3, {1, 2})
 
-        set3 = set1 & set2
+        set3 = set1 & set2   # 同 intersection
         self.assertEqual(set3, {1, 2})
 
         # 交换顺序不影响什么
@@ -69,13 +69,13 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(set3, {'a', 'b', 1, 2})
         self.assertNotEqual(set1, set3)
 
-        set3 = set1 | set2
+        set3 = set1 | set2  # 同union
         self.assertEqual(set3, {'a', 'b', 1, 2})
 
         # 不同的元素
         s1 = {'a', 1}
         s2 = {'b', 1, 2}
-        s3 = s1.difference(s2)
+        s3 = s1.difference(s2)  # 属于s1的元素而不属于s2的元素
         self.assertEqual(s3, {'a'})
 
         s3 = s2.difference(s1)

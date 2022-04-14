@@ -67,7 +67,9 @@ def outer(a):
     return inner
 
 
+# bbf 与 bbd里面的a, b 不是同一个a, b, 他们的ID不一样.
 bbf = outer(5)
 bbf()
 bbd = outer(9)
 bbd()
+

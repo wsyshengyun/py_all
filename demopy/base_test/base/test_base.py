@@ -9,7 +9,7 @@ class MyTestCase(unittest.TestCase):
         pass
 
     def test_1(self):
-        #
+        # 交换两个元素
         a, b = 1, 2
         a, b = b, a
         self.assertEqual(a, 2)
@@ -21,8 +21,9 @@ class MyTestCase(unittest.TestCase):
         def f(num):
             f_return = lambda s: s
             return (num == 1 and f_return("one")) \
-                   or (num==2 and f_return('Two')) \
-                    or f_return('Other')
+                   or (num == 2 and f_return('Two')) \
+                   or f_return('Other')
+
         self.assertEqual(f(1), 'one')
         self.assertEqual(f(2), 'Two')
         self.assertEqual(f(3), "Other")
@@ -40,7 +41,6 @@ class MyTestCase(unittest.TestCase):
         # 对于and来说, 0具有短路的作用, 当遇到0的时候,不在继续后面的操作了,否则,继续后面
         # 对于and来说, 0 没有意义; 对于or来说1没有意义.
 
-
     def test_3(self):
         # 解包
         c = (1, 3, 4)
@@ -50,8 +50,6 @@ class MyTestCase(unittest.TestCase):
         a, b = c
         self.assertEqual(a, 1)
         self.assertEqual(b, 3)
-
-        pass
 
     def test_4(self):
         pass
