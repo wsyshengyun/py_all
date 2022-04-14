@@ -52,10 +52,36 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(b, 3)
 
     def test_4(self):
-        pass
+        # ord 与 chr
+        self.assertNotEqual(ord('a'), '97')
+        self.assertEqual(ord('a'), 97)
+        self.assertEqual(chr(97), 'a')
+
+        #  arrert
+        # assert False "False is assert"
+        assert 1
+        assert True
 
     def test_5(self):
-        pass
+        x = 1
+        while x <= 100:
+            x += 1
+        self.assertEqual(x, 101)
+
+        # for
+        i = 0
+        for i in range(1, 100):
+            pass
+
+        # 没有do...while
+        #
+        x = 0
+        while x<100:
+            x += 1
+        else:
+            # 如果没有遇到break就会执行这里
+            print('nihao')
+
 
     def test_6(self):
         pass
