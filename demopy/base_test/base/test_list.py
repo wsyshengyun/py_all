@@ -66,6 +66,36 @@ class MyTestCase(unittest.TestCase):
             ('a', 4), ('b', 5), ('c', 3), ('d', 1), ('e', 2)
         ])
 
+        # 复杂的排序
+        numbers = [93, 86, 11, 68, 70]
+        numbers.sort()
+        self.assertEqual(numbers, [11, 68, 70, 86, 93])
+
+        class Tool:
+            def __init__(self, name, weight):
+                self.name = name
+                self.weight = weight
+
+            def __repr__(self):
+                return f'Tool({self.name!r}, {self.weight})'
+
+        tools = [
+            Tool('level', 3.5),
+            Tool('hammer', 1.25),
+            Tool('screwdriver', 0.5),
+            Tool('chisel', 0.25),
+
+        ]
+        tools.sort(key=lambda x: x.name)
+        self.assertEqual(tools[0].name, 'chisel')
+        self.assertEqual(tools[1].name, 'hammer')
+        self.assertEqual(tools[2].name, 'level')
+        self.assertEqual(tools[3].name, 'screwdriver')
+
+
+
+
+
     def test_insert_and_copy(self):
         L = self.L.copy()
         self.assertEqual(len(L), 5)
@@ -170,7 +200,7 @@ class MyTestCase(unittest.TestCase):
         self.L.extend([6, 7])
         self.L.insert(0, 0)
         L = self.L.copy()
-        self.assertEqual(L, [0, 1, 2, 3, 4,5, 6, 7])
+        self.assertEqual(L, [0, 1, 2, 3, 4, 5, 6, 7])
         self.assertEqual(L[1:3], [1, 2])
         self.assertEqual(L[0:1], [0])
         self.assertEqual(L[:2], [0, 1])  # 不包括终点
@@ -217,11 +247,8 @@ class MyTestCase(unittest.TestCase):
         a = [1, 2, 3, 4, 5, 6]
         b = a
         a[:] = [101, 102, 103]
-        self.assertTrue(a is b )
+        self.assertTrue(a is b)
         self.assertEqual(a, [101, 102, 103])
-
-
-
 
 
 if __name__ == '__main__':
