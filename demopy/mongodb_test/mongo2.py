@@ -34,6 +34,7 @@ users = [
 ]
 
 if flg_insert:
+    global my_set
     my_set.insert_many(users)
 
 
