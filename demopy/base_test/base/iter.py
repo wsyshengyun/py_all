@@ -94,7 +94,6 @@ L.append(6)
 a, *b, c = aiter
 print("a is {}, b is {}, c is {}".format(a, b, c))
 
-
 # 生成器也是迭代器
 L = [1, 2, 3, 4]
 G = (i ** 2 for i in L)
@@ -109,7 +108,6 @@ print(next(G))  # 9
 g1 = iter(G)
 print(g1 is G)  # True
 
-
 ''' 当我们进行第二次遍历的时候,将一无所获'''
 ''' 你可以把迭代器看做是惰性迭代器,它们是一次性使用, 这意味着它们只能遍历一次'''
 aiter = iter(L)
@@ -117,7 +115,6 @@ l1 = list(aiter)
 l2 = list(aiter)
 print("l1 is {}".format(l1))  # [1,2,3,4]
 print("l2 is {}".format(l2))  # []
-
 
 '''
  从Set释放可以创建迭代器
@@ -135,6 +132,9 @@ print("下一项是: {}".format(next(aiter)))
 
 
 class Reverse(object):
+    """
+    相反,逆转
+    """
 
     def __init__(self, data):
         self.data = data
@@ -197,5 +197,7 @@ for i in obj_my_iterator:
 #         ch
 #         yg
 
+# 判断一个对象是否是一个迭代器
+import collections
 
-
+print("[] 是否是一个可迭代对象: {}".format(isinstance([], collections.Iterable)))
