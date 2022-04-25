@@ -54,4 +54,3 @@ print(result)
 func = lambda x, y=4: x + y
 result = func(3)
 print(result)
-

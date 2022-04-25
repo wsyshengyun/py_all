@@ -5,10 +5,12 @@
 
 '''
 
-from ...logger.log import logger
-from PyQt5.QtWidgets import QWidget, QApplication, QProgressBar, QPushButton
+import time
+
 from PyQt5.QtCore import QBasicTimer
-import time 
+from PyQt5.QtWidgets import QWidget, QApplication, QProgressBar, QPushButton
+
+from ...logger.log import logger
 
 
 class MyClass(QWidget):
@@ -16,9 +18,8 @@ class MyClass(QWidget):
         super(MyClass, self).__init__()
         self.initUI()
 
-
     def initUI(self):
-        self.btn = QPushButton( 'Start', self) 
+        self.btn = QPushButton('Start', self)
         self.btn.move(40, 80)
         self.btn.clicked.connect(self.doAction)
 
@@ -27,7 +28,7 @@ class MyClass(QWidget):
 
         self.timer = QBasicTimer()
         self.step = 0
-        
+
         self.setGeometry(0, 0, 600, 400)
         self.setWindowTitle('QProgressBar')
         pass
@@ -42,7 +43,7 @@ class MyClass(QWidget):
             self.t0 = time.time()
             logger.info("开始时间为 self.t0 = {}".format(self.t0))
         pass
-    
+
     def timerEvent(self, e):
         """ 1到100大概运行时间为11秒,大约就是1S跑10个数字了,也就是一个数字为0.1秒 = 100毫秒 
             定时器的名称  QBasicTimer  basic:基础的
@@ -54,15 +55,14 @@ class MyClass(QWidget):
             self.timer.stop()
             self.btn.setText("Finished")
             logger.info("timerEvent=>stop!, run time is {} 秒".format(time.time() - self.t0))
-            return 
-        
-        self.step += 1 
+            return
+
+        self.step += 1
         self.pbar.setValue(self.step)
         logger.info("self.step = {}".format(self.step))
         pass
-    
-    
-    
+
+
 def main():
     import sys
     app = QApplication(sys.argv)

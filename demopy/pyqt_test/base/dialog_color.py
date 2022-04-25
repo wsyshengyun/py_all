@@ -5,27 +5,30 @@
 
 '''
 
-from PyQt5.QtWidgets import (QWidget,QPushButton, QFrame, QColorDialog, QApplication)
+import sys
+
 from PyQt5.QtGui import QColor
-import sys 
+from PyQt5.QtWidgets import (QWidget, QPushButton, QFrame, QColorDialog, QApplication)
+
 from ...logger.log import logger
+
 
 class Example(QWidget):
     def __init__(self):
         super(Example, self).__init__()
         self.initUI()
-    
+
     def initUI(self):
-        col = QColor(0,0,0)
+        col = QColor(0, 0, 0)
         logger.info("col = {}, col.name = {}".format(col, col.name()))
         self.btn = QPushButton('Dialog', self)
         self.btn.move(20, 20)
         self.btn.clicked.connect(self.showDialog)
 
         self.frm = QFrame(self)
-        self.frm.setStyleSheet("QWidget{ background-color:%s}" 
+        self.frm.setStyleSheet("QWidget{ background-color:%s}"
                                % col.name())
-    
+
         self.frm.setGeometry(171, 40, 200, 200)
         self.setGeometry(300, 300, 450, 350)
         self.setWindowTitle("color dialog")
@@ -39,8 +42,9 @@ class Example(QWidget):
 
         if col.isValid():
             logger.info("col.isValid = {}".format(col.isValid()))
-            self.frm.setStyleSheet("QWidget{background-color: %s}"%
+            self.frm.setStyleSheet("QWidget{background-color: %s}" %
                                    col.name())
+
 
 def main():
     app = QApplication(sys.argv)
@@ -48,4 +52,3 @@ def main():
     sys.exit(app.exec_())
 
     pass
-    

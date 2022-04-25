@@ -5,11 +5,11 @@
 
 '''
 
-
-from PyQt5.QtWidgets import QWidget, QApplication , QLineEdit, QPushButton
-from ...logger.log import logger
 from PyQt5.QtCore import Qt, QMimeData
 from PyQt5.QtGui import QDrag
+from PyQt5.QtWidgets import QWidget, QApplication, QPushButton
+
+from ...logger.log import logger
 
 
 class Button(QPushButton):
@@ -19,8 +19,8 @@ class Button(QPushButton):
 
     def mouseMoveEvent(self, e):
         if e.buttons() != Qt.RightButton:
-            return 
-        
+            return
+
         mimeData = QMimeData()
 
         drag = QDrag(self)
@@ -30,15 +30,15 @@ class Button(QPushButton):
         logger.info("pos = {}".format(pos))
 
         dropAction = drag.exec_(Qt.MoveAction)
-        pass  
-    
+        pass
+
     def mousePressEvent(self, e):
         super().mousePressEvent(e)
 
         if e.buttons() != Qt.RightButton():
-            return 
-        
-        # if e.buttons() == Qt.LeftButton():
+            return
+
+            # if e.buttons() == Qt.LeftButton():
         #     return 
         #     logger.info("press, pos is {}".format(e.pos()))
         # pass
@@ -51,21 +51,21 @@ class MyClass(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setAcceptDrops(True) 
+        self.setAcceptDrops(True)
 
         self.button = Button('Button', self)
         self.button.move(100, 65)
-        
+
         self.setGeometry(0, 0, 600, 500)
         pass
 
     def dragEnterEvent(self, e):
         e.accept()
-        
+
     def dropEvent(self, e):
-        position = e.pos() 
+        position = e.pos()
         self.button.move(position)
-        
+
         e.setDropAction(Qt.MoveAction)
         e.accept()
 

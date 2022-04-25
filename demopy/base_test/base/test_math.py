@@ -1,4 +1,5 @@
 import unittest
+
 import math
 
 
@@ -9,9 +10,7 @@ class MyTestCase(unittest.TestCase):
 
         pow = math.pow(2, 3)
         self.assertEqual(pow, 8)  # 2的3次方
-        self.assertEqual(math.pow(4, 0.5), 2)    # 4的开方
-
-
+        self.assertEqual(math.pow(4, 0.5), 2)  # 4的开方
 
 
 if __name__ == '__main__':

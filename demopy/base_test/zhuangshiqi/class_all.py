@@ -1,8 +1,8 @@
 # coding:utf8 
 
 import functools
-from functools import wraps
 import time
+from functools import wraps
 
 
 class DelayFunc:
@@ -42,6 +42,7 @@ def singleton(cls):
     3 外函数返回内函数对象; 内函数返回被装饰函数的执行
             执行也就是: 如果是类就是  类名(参数)  如果是函数就是返回: 函数名(参数)
     """
+
     def get_instance(*args, **kw):  # 参数为创建被装饰的类的初始化参数
         cls_name = cls.__name__
         if cls_name not in instances:
@@ -50,7 +51,7 @@ def singleton(cls):
         return instances[cls_name]  # 装饰器最终要返回被装饰函数的执行结果
         # return instance
 
-    return get_instance   # 返回内层函数\\\\
+    return get_instance  # 返回内层函数\\\\
 
 
 @singleton
@@ -137,6 +138,7 @@ def logger_level(level):
     """
     带参数的装饰器: 参数可以在最内层使用
     """
+
     def _inner(func):
         @functools.wraps(func)
         def __inner(*args, **kw):

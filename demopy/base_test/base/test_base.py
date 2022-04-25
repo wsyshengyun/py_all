@@ -1,4 +1,5 @@
 import unittest
+
 """
 1、字符串前加 u
 
@@ -64,6 +65,7 @@ processing done in 1.00 s
 
 
 """
+
 
 class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
@@ -140,14 +142,14 @@ class MyTestCase(unittest.TestCase):
         # 没有do...while
         #
         x = 0
-        while x<100:
+        while x < 100:
             x += 1
         else:
             # 如果没有遇到break就会执行这里
             print('nihao')
 
     def test_6(self):
-        a, b, *other= 1, 2, 3, 4, 5, 6
+        a, b, *other = 1, 2, 3, 4, 5, 6
         self.assertEqual(a, 1)
         self.assertEqual(b, 2)
 
@@ -159,6 +161,7 @@ class MyTestCase(unittest.TestCase):
             for i in range(1, 7):
                 yield i
             # yield (1, 2, 3, 4, 5, 6)
+
         it = generate_csv()
         a, *b = it
         self.assertEqual(a, 1)

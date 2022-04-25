@@ -4,7 +4,7 @@
 @Time    :   2021/09/22 22:22:53
 '''
 
-import sock_alladdress as sock 
+import sock_alladdress as sock
 
 obj = sock.MySocketClient('127.0.0.1', 9999)
 obj.start()

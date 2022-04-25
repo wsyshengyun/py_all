@@ -1,7 +1,7 @@
 # coding:utf8  
 
-from functools import partial
 import functools
+from functools import partial
 
 """
 偏函数?
@@ -34,5 +34,3 @@ from operator import add
 
 value = reduce(add, range(100))
 print(value)  # 4950
-
-

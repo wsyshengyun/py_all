@@ -5,9 +5,10 @@
 
 '''
 
+import sys
+
 from PyQt5.QtWidgets import (QWidget, QPushButton, QLineEdit,
                              QInputDialog, QApplication)
-import sys
 
 
 class Example(QWidget):
@@ -31,7 +32,7 @@ class Example(QWidget):
 
     def showDialog(self):
         text, ok = QInputDialog.getText(self, 'Input Dialog', 'Enter your name:')
-            # QInputDialog.getText(self, 对话框标题, 标签控件内容:提示输入的东西))
+        # QInputDialog.getText(self, 对话框标题, 标签控件内容:提示输入的东西))
 
         if ok:
             self.le.setText(str(text))

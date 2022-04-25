@@ -4,7 +4,8 @@
 @Time    :   2020/09/27 22:36:45
 '''
 
-import types  
+import types
+
 
 class Iftest(object):
     def __init__(self, module):
@@ -14,11 +15,10 @@ class Iftest(object):
         self.types_build_func = types.BuiltinFunctionType
         self.types_build_method = types.BuiltinMethodType
         self.types_class = type
-    
 
     def is_types(self, tsr, typeName):
         if type(getattr(self.module, tsr)) == typeName:
-            return True 
+            return True
         else:
             return None
 
@@ -40,10 +40,5 @@ def main():
     obj.out()
 
 
-
 if __name__ == '__main__':
     main()
-    
-
-        
-            

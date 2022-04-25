@@ -5,6 +5,7 @@
 '''
 """ 定义单列类；这个类其实是元类；因为继承了type """
 
+
 class Singleton(type):
 
     def __call__(self, *args, **kwargs):
@@ -12,7 +13,10 @@ class Singleton(type):
             self._instance = super().__call__(*args, **kwargs)
         return self._instance
 
+
 """ Foo类使用了singleton进行创建 """
+
+
 class Foo(object, metaclass=Singleton):
     pass
 
@@ -22,4 +26,4 @@ f2 = Foo()
 print(f1)
 print(f2)
 print(f1 is f2)
-print(f1 is f2) 
+print(f1 is f2)

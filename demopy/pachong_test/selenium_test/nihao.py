@@ -1,12 +1,12 @@
 ﻿# import selenium 
-import time 
 from selenium import webdriver
-# from selenium.webdriver.common.keys import Keys 
-from ...logger.log import logger
 
+# from selenium.webdriver.common.keys import Keys
+from ...logger.log import logger
 
 url = 'https://www.baidu.com'
 path = "d:\python\edgedriver_win64\msedgedriver.exe"
+
 
 class MySelenium(object):
     def __init__(self, path, url):
@@ -14,8 +14,7 @@ class MySelenium(object):
         self.url = url
         self.init()
         pass
-    
-    
+
     def init(self):
         self.driver = webdriver.Edge(self.driver_path)
         self.driver.get(self.url)
@@ -27,10 +26,9 @@ class MySelenium(object):
         if element:
             element.click()
 
-       
 
 def test():
-   obj = MySelenium(path, url) 
-   obj.test_find()
+    obj = MySelenium(path, url)
+    obj.test_find()
 
 # test()

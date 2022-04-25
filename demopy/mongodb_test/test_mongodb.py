@@ -7,10 +7,10 @@
 '''
 
 import unittest
+
 from pymongo import MongoClient
-import pymongo
+
 from demopy.logger.log import logger
-import datetime
 
 
 class MyMongodbTest(unittest.TestCase):

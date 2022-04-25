@@ -5,7 +5,8 @@
 
 '''
 
-import sys 
+import sys
+
 from PyQt5.QtWidgets import QWidget, QApplication
 
 if __name__ == '__main__':

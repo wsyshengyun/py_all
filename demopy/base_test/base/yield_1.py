@@ -1,19 +1,16 @@
-
 from itertools import product
-from tkinter.messagebox import NO
 
 
 def consumer():
-    
-    i = None 
+    i = None
     while True:
-        j = yield i 
-        print("consume j %s"  % j)
+        j = yield i
+        print("consume j %s" % j)
+
 
 def producer(c):
-    
     exit('nihao')
-    c.__next__() 
+    c.__next__()
     for i in range(5):
         print('product %s' % i)
         c.send(i)
@@ -22,10 +19,7 @@ def producer(c):
 
 
 # def main():
-    
+
 c = consumer()
 product(c)
 pass
-    
-    
-    

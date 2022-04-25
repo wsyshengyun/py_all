@@ -9,9 +9,8 @@ python 进程的学习
 通过类建立进程
  """
 
-from multiprocessing import Process, Lock
-import time 
-
+import time
+from multiprocessing import Process
 
 
 class MyProcess(Process):
@@ -20,22 +19,20 @@ class MyProcess(Process):
         self.loop = loop
         pass
 
-
-
     def run(self):
         for count in range(self.loop):
             time.sleep(0.1)
-            print("Pid: `                " + str(self.pid) + ' LoopCount: ' + str(count)) 
+            print("Pid: `                " + str(self.pid) + ' LoopCount: ' + str(count))
+
 
 def main():
     for i in range(10, 20):
-        p = MyProcess(i) 
+        p = MyProcess(i)
         # p.daemon = True 
-        p.start() 
+        p.start()
         # p.join()
 
 
 if __name__ == '__main__':
     main()
     print("nihaoa")
-    

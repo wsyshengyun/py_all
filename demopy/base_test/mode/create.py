@@ -18,7 +18,6 @@ class Register(Prototype):
 
 
 if '__main__' == __name__:
-
     obj = Register([1, 2, 3, 4])
     obj_one = obj.clone()
     print(obj)

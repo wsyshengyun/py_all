@@ -4,8 +4,6 @@
 @Time    :   2020/10/17 11:06:54
 '''
 
-from functools import wraps
-
 
 def fun():
     return id(fun)

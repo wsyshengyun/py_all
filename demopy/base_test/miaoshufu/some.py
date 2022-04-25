@@ -1,30 +1,34 @@
 # coding: utf-8
-from functools import wraps
+
 """ 引用ctypes模块 为了通过id得到id所在的对象
 以此了些一个函数还存在不存在 """
 
+import ctypes
 
 
-
-import ctypes 
 def myfunc():
     print("in myfunc")
     _id = id(myfunc)
     print(_id)
     return _id
+
+
 """ 得到函数myfunc的id， 看下面把myfunc重新包装后，此函数还存在不存在呢 """
 id_myfunc = myfunc()
+
 
 def log(func):
     # @wraps
     def _inner(*args, **kwargs):
-        return func(*args, **kwargs)  
+        return func(*args, **kwargs)
+
     return _inner
+
 
 myfunc = log(myfunc)
 id_log = id(myfunc)
 # print(id_log)
-print() 
+print()
 # value = ctypes.cast(id_myfunc, ctypes.py_object).value
 value = ctypes.cast(id_myfunc, ctypes.py_object).value
 print(type(myfunc))

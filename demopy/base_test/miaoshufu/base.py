@@ -10,42 +10,47 @@ low_balance_warning都会被调用。
 
 from weakref import WeakKeyDictionary
 
+
 class CallbackProperty(object):
     """A property that will alert observers when upon updates"""
+
     def __init__(self, default=None):
         self.data = WeakKeyDictionary()
         self.default = default
         self.callbacks = WeakKeyDictionary()
- 
+
     def __get__(self, instance, owner):
         return self.data.get(instance, self.default)
- 
-    def __set__(self, instance, value):        
+
+    def __set__(self, instance, value):
         for callback in self.callbacks.get(instance, []):
             # alert callback function of new value
             callback(value)
         self.data[instance] = value
- 
+
     def add_callback(self, instance, callback):
         """Add a new function to call everytime the descriptor updates"""
-        #but how do we get here?!?!
+        # but how do we get here?!?!
         if instance not in self.callbacks:
             self.callbacks[instance] = []
         self.callbacks[instance].append(callback)
- 
+
+
 class BankAccount(object):
     balance = CallbackProperty(0)
- 
+
+
 def low_balance_warning(value):
     if value < 100:
-        print( "You are poor")
- 
+        print("You are poor")
+
+
 ba = BankAccount()
 BankAccount.balance.add_callback(ba, low_balance_warning)
- 
+
 ba.balance = 5000
-print ("Balance is %s" % ba.balance)
+print("Balance is %s" % ba.balance)
 ba.balance = 99
-print ("Balance is %s" % ba.balance)
+print("Balance is %s" % ba.balance)
 Balance is 5000
 Balance is 99

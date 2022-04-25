@@ -1,8 +1,11 @@
 #!/usr/bin/env python
-#coding=utf-8
+# coding=utf-8
 from time import time
+
+
 class Cache:
     '''简单的缓存系统'''
+
     def __init__(self):
         '''初始化'''
         self.mem = {}
@@ -17,7 +20,7 @@ class Cache:
             self.time[key] = time() + age
         return True
 
-    def get(self,key):
+    def get(self, key):
         '''获取键key对应的值'''
         if key in self.mem.keys():
             if self.time[key] == -1 or self.time[key] > time():
@@ -28,7 +31,7 @@ class Cache:
         else:
             return None
 
-    def delete(self,key):
+    def delete(self, key):
         '''删除键为key的条目'''
         del self.mem[key]
         del self.time[key]

@@ -4,20 +4,23 @@
 @Time    :   2022/03/18 22:45:05
 
 '''
-from ...logger.log import logger
+import sys
+
 from PyQt5.QtWidgets import QApplication, QFontDialog, QWidget, QPushButton \
-    ,QSizePolicy, QLabel, QVBoxLayout
-import sys 
+    , QSizePolicy, QLabel, QVBoxLayout
+
+from ...logger.log import logger
+
 
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-        
+
         self.initUI()
         pass
 
     def initUI(self):
-        vbox = QVBoxLayout() 
+        vbox = QVBoxLayout()
         btn = QPushButton('Dialog', self)
         btn.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         logger.info("QsizePolicy.Fixed={}".format(QSizePolicy.Fixed))
@@ -41,35 +44,39 @@ class Example(QWidget):
 
     def showDialog(self):
         font, ok = QFontDialog.getFont()
-        family, weight, bold, fams, tostr= \
+        family, weight, bold, fams, tostr = \
             font.family(), font.weight(), font.bold(), '_', font.toString()
         logger.info("font={}, ok={}".format(font, ok))
         logger.info("family={}, weight={}, bold={}, fams={}, tostr={}".format(
-            family, weight, bold, fams, tostr 
+            family, weight, bold, fams, tostr
         ))
         if ok:
             self.lbl.setFont(font)
         pass
 
+
 def main():
     app = QApplication(sys.argv)
-    ex= Example()
+    ex = Example()
     sys.exit(app.exec_())
 
-from PyQt5.QWigets import QWidget, QApplication 
+
+from PyQt5.QWigets import QWidget, QApplication
+
+
 class my(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
 
-
     def initUI(self):
         pass
+
+
 class Nihao(QWidget):
     def __init__(self):
         super(Nihao, self).__init__()
         self.initUI()
 
-
     def initUI(self):
-        pass 
+        pass

@@ -3,7 +3,7 @@
 class someProperty(object):
     def __init__(self, fget=None, fset=None):
         print("__init__")
-        self.fget= fget
+        self.fget = fget
         self.fset = fset
 
     def __get__(self, instance, owner):
@@ -15,7 +15,6 @@ class someProperty(object):
         return instance.__dict__.get('naem', None)
         同一实例，不同标签描述符返回的不一样  """
 
-
     def __set__(self, instance, value):
         print("__set__")
         self.fset(instance, value)
@@ -26,11 +25,10 @@ class someProperty(object):
         return type(self)(self.fget, self.fset)
 
 
-
 class Test(object):
-    def __init__(self, a ):
-       print("Test __init__")
-       self.a = a 
+    def __init__(self, a):
+        print("Test __init__")
+        self.a = a
 
     @someProperty
     def math(self):
@@ -41,15 +39,16 @@ class Test(object):
     def math(self, value):
         print("math set...")
         if not isinstance(value, int):
-            raise TypeError("typeerror") 
-        if not 0<value<=100:
+            raise TypeError("typeerror")
+        if not 0 < value <= 100:
             raise ValueError('value must be [0, 100]')
         self._math = value
 
-obj = Test(2) 
-obj.math = 99 
+
+obj = Test(2)
+obj.math = 99
 print(obj.math)
-print("="*30)
+print("=" * 30)
 
 obj2 = Test(3)
 obj2.math = 45

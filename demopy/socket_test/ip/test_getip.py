@@ -5,18 +5,21 @@
 
 '''
 
-import socket, platform 
+import platform
+import socket
+
 
 def get_ip():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(('www.baidu.com', 0))
-        ip = s.getsockname()[0] 
+        ip = s.getsockname()[0]
     except:
         ip = '0.0.0.0'
     finally:
-        s.close() 
+        s.close()
     return ip
+
 
 if __name__ == "__main__":
     sys_type = platform.system()
@@ -24,7 +27,6 @@ if __name__ == "__main__":
     """ 输出本机的IP  """
     print("socket.gethostname() -> {}".format(socket.gethostname()))
     # print("socket.gethostname() -> {}".format(socket.gethostname()))
-
 
     if sys_type == "Windows" or "Darwin":
         ip_address = socket.gethostbyname(socket.gethostname())

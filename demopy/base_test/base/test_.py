@@ -30,7 +30,7 @@ for key, value in d.items():
 # 并行迭代
 names = ['anne', 'beth', 'george', 'damon']
 ages = [12, 45, 32, 102]
-for name, age in zip(names, ages ):
+for name, age in zip(names, ages):
     print("name is {}, ".format(name), "age is {}".format(age))
 
 # 迭代时获取索引
@@ -38,9 +38,6 @@ tsr = 'ni hao, wo shi wang'
 for index, ts in enumerate(tsr):
     print(index, ts)
 
-
 # 跳出循环
 # break
 # continue
-
-

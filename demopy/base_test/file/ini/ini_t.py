@@ -11,17 +11,18 @@ sender - 发送者
 ConfigParser 模块为常用的操作ini文件的模块，但是存在一些缺陷，无法识别section的大小写，无法读取文件注释，这样修带有注释的配置文件时就会存在问题。
 
 '''
-import configparser 
-from ....logger.log import logger
-import os 
+import configparser
+import os
 
+from ....logger.log import logger
 
 curpath = os.path.dirname(os.path.realpath(__file__))
 cfgpath = os.path.join(curpath, 'test.ini')
 if not os.path.exists(cfgpath):
     logger.info("路径不存在")
-    raise "not exists" 
+    raise "not exists"
 logger.info('config path is : {}'.format(cfgpath))
+
 
 # 创建管理对象
 # conf = configparser.ConfigParser()
@@ -32,7 +33,6 @@ def read_config():
     sections = conf.sections()
     logger.info('获取配置文件所有的section: {},  type is {}'.format(sections, type(sections)))
 
-
     # 获取所有的key
     options = conf.options(sections[0])
     logger.info('获取指定的sections:{} 下所有的option:{}'.format(sections[0], options))
@@ -40,13 +40,15 @@ def read_config():
     # items = conf.items('email_163')
     # logger.info('获取指定sections下所有的键值对: %s' % items)
     items = conf.items(sections[1])
-    logger.info('获取指定sections: {} , 下所有的键值对: {}'.format(sections[1], items) )
+    logger.info('获取指定sections: {} , 下所有的键值对: {}'.format(sections[1], items))
 
     value = conf.get('email_163', 'sender')
     logger.info('获取指定的sections - {}, option - {}, value - {}'.format('email_163', 'sender', value))
 
+
 def print_sections():
     logger.info("所有的字段：{}".format(conf.sections()))
+
 
 def print_all_items():
     sections = conf.sections()
@@ -56,10 +58,10 @@ def print_all_items():
             value = conf.get(sec, key)
             logger.info("[{}]  {} = {} ".format(sec, key, value))
 
+
 def write():
     conf.write(open(cfgpath, 'a', encoding='utf8'))
     pass
-
 
 
 class MyConfigIni(object):
@@ -68,24 +70,21 @@ class MyConfigIni(object):
         self.conf = configparser.ConfigParser()
         if logger:
             self.logger = logger
-        
+
         self.logger.info("path : {}".format(self.path))
         pass
 
-
     def conf(self):
         return self.conf
-    
-    
+
     def read(self):
         self.conf.read(self.path, encoding='utf-8')
 
     def get_sections(self):
         return self.conf.sections()
-    
-    def write(self, mode = 'w'):
+
+    def write(self, mode='w'):
         self.conf.write(open(self.path, mode, encoding='utf8'))
-    
 
     def add_section(self, sec):
         """ 添加section，添加前检查 """
@@ -112,9 +111,8 @@ class MyConfigIni(object):
         else:
             self.logger.warn("add option: {} is failed, this is exists!".format(option))
 
-        
         self.conf.set(sec, key, value)
-    
+
     def remove_option(self, sec, option):
         """ remove option """
         if self.conf.has_option(sec, option):
@@ -124,16 +122,14 @@ class MyConfigIni(object):
         else:
             self.logger.warn("remove {} is failed, this option is not exists!".format(option))
 
-    
     def modify_value(self, sec, option, value):
-        self.conf.set(sec, option,value=value)
+        self.conf.set(sec, option, value=value)
         self.write(mode='r+')
-
 
     def print_sections(self):
         """ logging sections """
         self.logger.info("所有的字段：{}".format(self.conf.sections()))
-        
+
     def print_all_items(self):
         """ logging items """
         sections = self.get_sections()
@@ -143,10 +139,8 @@ class MyConfigIni(object):
             for key in options:
                 value = self.conf.get(sec, key)
                 self.logger.info("[{}]  {} = {} ".format(sec, key, value))
-        
-    
-    
-    
+
+
 def test():
     obj = MyConfigIni(cfgpath, logger=logger)
     obj.read()
@@ -159,6 +153,7 @@ def test():
     obj.remove_option("Sheng", 'xiancheng1')
 
     pass
+
 
 test()
 # read_config()

@@ -4,31 +4,31 @@
 @Time    :   2021/09/20 21:48:46
 python一些魔法函数的问题
 '''
-import sys 
+import sys
+
 # def Log(msg):
-    # print("Line: {} -- ".format( sys._getframe().f_lineno), msg)
+# print("Line: {} -- ".format( sys._getframe().f_lineno), msg)
 fl = sys._getframe
 
-        
-    
 
 class Test(object):
-    def __init__(self,data = 1):
+    def __init__(self, data=1):
         self.data = data
         self.a = 12
 
     def __iter__(self):
-        return self 
+        return self
 
     def __next__(self):
-        if self.data>9:
+        if self.data > 9:
             raise StopIteration
         else:
-            self.data += 1 
+            self.data += 1
             return self.data
 
+
 for item in Test(2):
-    print('[%s] - '% (sys._getframe().f_lineno),item)
+    print('[%s] - ' % (sys._getframe().f_lineno), item)
 
 
 # -----------------------------------------------------------
@@ -38,20 +38,20 @@ for item in Test(2):
 class People(object):
     def __init__(self, name, age):
         print(fl().f_lineno, "__init__ is call ")
-        self.name = name 
-        self.age = age 
-        self.a = [1,2,3,4,5]
+        self.name = name
+        self.age = age
+        self.a = [1, 2, 3, 4, 5]
 
     def __str__(self) -> str:
         return self.name + " ：" + str(self.age)
-    
+
     def __lt__(self, other):
-        return self.name < other.name if self.name != other.name else self.age < other.age 
+        return self.name < other.name if self.name != other.name else self.age < other.age
 
-    # def __str__(self) -> str:
-    #     return "this is string %s" % (len(self.a) + 100) 
+        # def __str__(self) -> str:
 
-    
+    #     return "this is string %s" % (len(self.a) + 100)
+
     def __repr__(self) -> str:
         return str(len(self.a) + 100)
 
@@ -60,33 +60,32 @@ class People(object):
         return super().__setattr__(name, value)
 
     def __getattr__(self, name):
-        print(fl().f_lineno, "__getattr__ is call, name is: %s" % name ) 
+        print(fl().f_lineno, "__getattr__ is call, name is: %s" % name)
         # return super().__getattr__(name)
         pass
 
     def __getattribute__(self, name: str):
-        print(fl().f_lineno, "__getattribute__ is call") 
+        print(fl().f_lineno, "__getattribute__ is call")
         return super().__getattribute__(name)
 
     def __delattr__(self, name):
-        print('[%s] - '% (sys._getframe().f_lineno),"__delattr__ () is called...")
+        print('[%s] - ' % (sys._getframe().f_lineno), "__delattr__ () is called...")
 
     def __setitem__(self, name, value):
         """ obj[bjm] """
-        print('[%s] - '% (sys._getframe().f_lineno),"__setitem__ is called...")
+        print('[%s] - ' % (sys._getframe().f_lineno), "__setitem__ is called...")
         pass
 
-
     def __getitem__(self, name):
-        print('[%s] - '% (sys._getframe().f_lineno),"__getitem__ is called ")
+        print('[%s] - ' % (sys._getframe().f_lineno), "__getitem__ is called ")
         pass
 
     def __iter__(self):
-        return iter(self.a )
+        return iter(self.a)
         pass
 
     def __del__(self):
-        print('[%s] - '% (sys._getframe().f_lineno),"__del__ is called... ")
+        print('[%s] - ' % (sys._getframe().f_lineno), "__del__ is called... ")
         pass
 
 
@@ -117,17 +116,17 @@ def main_people():
     # _dit[c] = 100
     # print('[%s] - '% (sys._getframe().f_lineno),_dit)
 
-
     # for i in obj:
-        # print('[%s] - '% (sys._getframe().f_lineno), i )
-
+    # print('[%s] - '% (sys._getframe().f_lineno), i )
 
     del obj.name
     pass
 
+
 main_people()
 
-#============================================================================
+
+# ============================================================================
 def main():
     obj = Test()
     obj = 0

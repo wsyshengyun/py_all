@@ -6,11 +6,13 @@
 
 import socket
 
+
 class MySocket(object):
     size = 1024
+
     def __init__(self, ip, port):
         self.ip = ip
-        self.port = port 
+        self.port = port
         self.sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
 
 
@@ -20,22 +22,19 @@ class MySocketClient(MySocket):
         con = self.sk.connect((self.ip, self.port))
         print("客户端con is :{}".format(con))
 
-
     def start(self):
         while True:
             inp = input("请输入你要发送的信息： ").strip()
             if not inp:
                 continue
             elif inp == 'exit':
-                print("客户端通信结束！") 
+                print("客户端通信结束！")
                 break
             else:
                 self.sk.sendall(inp.encode())
-                server_reply = self.sk.recv(self.size).decode() 
+                server_reply = self.sk.recv(self.size).decode()
                 print(server_reply)
         self.sk.close()
-
-
 
 
 class MySocketServer(MySocket):
@@ -44,7 +43,7 @@ class MySocketServer(MySocket):
         self.sk.bind((self.ip, self.port))
 
     def start(self):
-        self.sk.listen(10) # 最大监听数，允许多少人在排队
+        self.sk.listen(10)  # 最大监听数，允许多少人在排队
         print("开始监听")
         conn, addr = self.sk.accept()
         while True:
@@ -56,7 +55,3 @@ class MySocketServer(MySocket):
             conn.sendall("服务器已经收到你的信息.".encode())
         self.sk.close()
         exit("通信结束~")
-
-
-
-    

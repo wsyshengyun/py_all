@@ -55,7 +55,7 @@ class MyTestCase(unittest.TestCase):
         set3 = set1.intersection(set2)
         self.assertEqual(set3, {1, 2})
 
-        set3 = set1 & set2   # 同 intersection
+        set3 = set1 & set2  # 同 intersection
         self.assertEqual(set3, {1, 2})
 
         # 交换顺序不影响什么
@@ -80,8 +80,6 @@ class MyTestCase(unittest.TestCase):
 
         s3 = s2.difference(s1)
         self.assertEqual(s3, {'b', 2})
-
-
 
     def test_CURD(self):
         """C 增 U改update  R 查找 D 删除

@@ -14,7 +14,7 @@ class Demo:
 
     # def __str__(self):
     #     return "str...."
-        
 
-obj = Demo() 
+
+obj = Demo()
 print(obj)

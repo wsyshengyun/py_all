@@ -30,11 +30,12 @@ class Study(object):
     ca = 0
     cb = 1
     cc = []
-    def __init__(self,a, b=2) -> None:
+
+    def __init__(self, a, b=2) -> None:
         super().__init__()
         self.a = a
-        self.b = b 
-    
+        self.b = b
+
     def out(self):
         print("两个参数的值为{}和{}".format(self.a, self.b))
 
@@ -45,19 +46,19 @@ class Study(object):
 
     def out_self_cls(self):
         print("对象的全局成员有{}、{}和{}".format(self.ca, self.cb, self.cc))
-        
+
 
 def main_study():
     obj = Study(12)
     obj.out()
 
-
     obj.ca = 10
-    obj.cb = 20 
+    obj.cb = 20
     obj.cc.append(30)
     obj.out_cls()
     obj.out_self_cls()
     pass
+
 
 if __name__ == "__main__":
     main_study()

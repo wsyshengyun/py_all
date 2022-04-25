@@ -1,9 +1,5 @@
-
-
 import json
-from textwrap import indent 
 import unittest
-
 
 """ 
 关于编码和解码
@@ -15,23 +11,19 @@ import unittest
 
 """
 
-class MyJsonTest(unittest.TestCase):
-    
-    def setUp(self):
-        self.path = 'project/log/tt.json' 
-        
-        pass
-        
-    
-    def tearDown(self):
 
-        
+class MyJsonTest(unittest.TestCase):
+
+    def setUp(self):
+        self.path = 'project/log/tt.json'
+
         pass
-        
-        
-        
+
+    def tearDown(self):
+        pass
+
     def test_dumps(self):
-        data = json.dumps([]) 
+        data = json.dumps([])
         self.assertEqual(data, '[]')
 
         d2 = json.dumps(2)
@@ -40,24 +32,20 @@ class MyJsonTest(unittest.TestCase):
         d3 = json.dumps(3)
         self.assertEqual(d3, '3')
 
-        D = {'name':'Tom', 'age':23}
+        D = {'name': 'Tom', 'age': 23}
         d4 = json.dumps(D)
         self.assertEqual(d4, '{"name": "Tom", "age": 23}')
         self.assertEqual(d4, str(D).replace('\'', '\"'))
-        
+
         pass
-        
-        
+
     def test_dump(self):
-        
-        D = {'name':'Tom', 'age':23}
+        D = {'name': 'Tom', 'age': 23}
         with open(self.path, 'w', encoding='utf-8') as f:
             f.write(json.dumps(D, indent=4))
         pass
 
-    
     def test_loads(self):
-        
         """ 将字符串还原称为dict """
         # D = "{'name':'Toms', 'age':23}" 
         D = '{"name":"Toms", "age":23}'  # !!! 上面的不可以转换为dict对象 
@@ -66,9 +54,7 @@ class MyJsonTest(unittest.TestCase):
         self.assertEqual(d1.get('name'), 'Toms')
         pass
 
-    
     def test_load(self):
-        
         """ 注意区分loads和load
         loads 加载的是字符串类型; 
         load加载的是文件对象; 
@@ -84,30 +70,19 @@ class MyJsonTest(unittest.TestCase):
             self.assertEqual(type(d3), dict)
             self.assertEqual(d3.get('name'), 'Tom')
         pass
-        
-       
-        
+
     def test_manyline_load(self):
-        
-        path = 'project/log/manyline.json' 
+        path = 'project/log/manyline.json'
         with open(path, 'r', encoding='utf-8') as f:
             # joinstr = ''.join([line.strip() for line in f])
             joinstr = ''.join([line for line in f])
-            new = '{"dict":[' + joinstr +  '[}'
+            new = '{"dict":[' + joinstr + '[}'
             d1 = json.dumps(new)
             print(d1)
-        
+
         pass
 
-    
     def test_convert_file(self):
-
         # TODO 如何将一个txt文件转换为utf8格式??
-        path = 'project/log/manyline.json' 
+        path = 'project/log/manyline.json'
         pass
-    
-        
-        
-        
-        
-        

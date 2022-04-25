@@ -2,9 +2,9 @@
 
 '''装饰器版的python自动缓存系统'''
 
-import time
 import hashlib
 import pickle
+import time
 from functools import wraps
 
 _cache = {}

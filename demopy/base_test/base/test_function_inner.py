@@ -30,7 +30,7 @@ class MyTestCase(unittest.TestCase):
         # join
         a = '; '
         b = '123'
-        c = a.join(b) # 把b看成了一个列表了
+        c = a.join(b)  # 把b看成了一个列表了
         self.assertEqual(c, "1; 2; 3")
 
         # split
@@ -45,11 +45,10 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual('python '.rstrip(), 'python')
         self.assertEqual('aabbcc'.strip('ac'), 'bb')
 
-
     def test_3(self):
         # map
         L = [1, 2, 3]
-        mapobj = map(lambda x: x>2, L)
+        mapobj = map(lambda x: x > 2, L)
         self.assertEqual(type(mapobj).__name__, 'map')
         self.assertEqual(list(mapobj), [False, False, True])
 
@@ -57,16 +56,16 @@ class MyTestCase(unittest.TestCase):
 
         # reduce
         from functools import reduce
-        value = reduce(lambda x, y: x*y, L)
+        value = reduce(lambda x, y: x * y, L)
         self.assertEqual(value, 6)
 
         # filter
-        result = filter(lambda x: x>2, L)
+        result = filter(lambda x: x > 2, L)
         self.assertEqual(list(result), [3])
         self.assertEqual(type(result).__name__, 'filter')
 
         # zip
-        l1 = [1 ,2, 3]
+        l1 = [1, 2, 3]
         l2 = 'a', 'b', 'c'
         ll = zip(l1, l2)
         self.assertEqual(type(ll).__name__, 'zip')
@@ -84,7 +83,7 @@ class MyTestCase(unittest.TestCase):
         # enumerate
         for i, k in enumerate(range(2, 7), start=0):
             # print(i, k)
-            self.assertEqual(i+2, k)
+            self.assertEqual(i + 2, k)
 
         self.assertEqual(list(enumerate(range(4))),
                          [(0, 0), (1, 1), (2, 2), (3, 3)])

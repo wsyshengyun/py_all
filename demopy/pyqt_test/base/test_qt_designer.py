@@ -5,11 +5,11 @@
 
 '''
 
-from PyQt5.QtWidgets import QWidget, QApplication, QDialog
+import sys
+
+from PyQt5.QtWidgets import QApplication, QDialog
 # from ui import Ui_test
 from ui.Ui_test import Ui_Dialog
-import sys 
-
 
 # class MyWindow(QWidget()):
 #     def __init__(self):

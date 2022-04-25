@@ -9,8 +9,11 @@ class HelloMeta(type):
         setattr(cls, "hello", self.hello)
         return cls
 
+
 class TryHello(object, metaclass=HelloMeta):
     def greet(self):
-        self.hello() 
-greeter =  TryHello() 
-greeter.greet()  
+        self.hello()
+
+
+greeter = TryHello()
+greeter.greet()

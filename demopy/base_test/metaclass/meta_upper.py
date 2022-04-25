@@ -5,16 +5,15 @@
 '''
 
 
-
 def upper_attr(class_naem, class_parents, class_attr):
-    new_attr = {} 
+    new_attr = {}
     for name, value in class_attr.items():
         if not name.startswith("__"):
-            new_attr[name.upper()] = value  
+            new_attr[name.upper()] = value
         else:
             new_attr[name] = value
-    
-    return type(class_naem, class_parents, new_attr)  
+
+    return type(class_naem, class_parents, new_attr)
 
 
 class Foo(object, metaclass=upper_attr):
@@ -22,7 +21,7 @@ class Foo(object, metaclass=upper_attr):
     bar = 'bip'
 
 
-obj = Foo() 
+obj = Foo()
 print(hasattr(obj, 'bar'))
 print(hasattr(obj, 'BAR'))
 print(obj.BAR)

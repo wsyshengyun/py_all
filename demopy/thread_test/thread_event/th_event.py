@@ -5,26 +5,29 @@
 Event类的应用: 模拟红绿灯
 '''
 
-import threading, time 
+import threading
+import time
 
-event = threading.Event() 
+event = threading.Event()
 
 
 def lighter():
-    green_time = 8 # green light's time 
+    green_time = 8  # green light's time
     red_time = 8
     event.set()  # 初始设置为绿灯
     while True:
         print("绿灯亮。。。\n")
         time.sleep(green_time)
-        event.clear() 
+        event.clear()
 
         print("红灯亮。。。\n")
-        time.sleep(red_time) 
+        time.sleep(red_time)
         event.set()
+
+
 def run(name):
     while True:
-        if event.is_set():  #判断当前是否为放行状态
+        if event.is_set():  # 判断当前是否为放行状态
             print("一辆{} 呼啸而过。。。\n".format(name))
             time.sleep(2)
         else:
@@ -34,15 +37,8 @@ def run(name):
 
 
 lighter = threading.Thread(target=lighter)
-lighter.start() 
+lighter.start()
 
 for name in ['奔驰', '宝马', '奥迪']:
-    car = threading.Thread(target=run, args=(name, ))
+    car = threading.Thread(target=run, args=(name,))
     car.start()
-
-
-
-
-
-
-

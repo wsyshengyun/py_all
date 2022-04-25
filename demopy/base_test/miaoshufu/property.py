@@ -14,19 +14,18 @@ class Property:
         else:
             return instance.__dict__.get(self.var_name, self.var_default_value)
 
-
     def __set__(self, instance, value):
         if type(value) is not self.var_type:
             raise TypeError("value type is valid")
         instance.__dict__[self.var_name] = value
 
-
     def __delete__(self, instance):
         raise AttributeError("不能删除的属性")
 
+
 class Student(object):
     name = Property('name', str, "Wsy")
-    age = Property('age', int) 
+    age = Property('age', int)
 
     def __init__(self, name, age):
         self.name = name
@@ -36,7 +35,7 @@ class Student(object):
         return '[name: {}, age: {}]'.format(self.name, self.age)
 
 
-stu = Student('wsy', 33) 
-stu2 = Student('lrf', 30) 
+stu = Student('wsy', 33)
+stu2 = Student('lrf', 30)
 print(stu)
 print(stu2)

@@ -5,10 +5,10 @@
 # from packb.packc.modulec1 import c1
 
 
-
 print("in moduleb1.py")
 
 b1 = 1000
+
 
 def moduleb1_fun():
     print("in moduleb1_fun")

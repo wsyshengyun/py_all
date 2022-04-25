@@ -3,7 +3,7 @@
 class BrokenNonNegative(object):
     def __init__(self, default):
         self.value = default
-    
+
     def __get__(self, instance, owner):
         return self.value
 
@@ -12,18 +12,18 @@ class BrokenNonNegative(object):
             raise ValueError("Negative value not allowed:%s" % value)
         self.value = value
 
+
 class Foo(object):
     bar = BrokenNonNegative(5)
-    def __init__(self, bar = 0):
+
+    def __init__(self, bar=0):
         self.bar = bar
 
     def func(slef):
         pass
 
 
-
-
-# f = Foo(9) 
+# f = Foo(9)
 # g = Foo(10) 
 # print(f.bar, g.bar)
 # print(f.bar is g.bar)

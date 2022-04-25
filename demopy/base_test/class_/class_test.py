@@ -3,35 +3,36 @@
 @File    :   class_test.py
 @Time    :   2021/09/21 19:54:11
 '''
-import sys 
+import sys
 
 
 class A(object):
     ca = 1
     cl = []
+
     def __init__(self):
         self._a = 1
 
     @property
     def age(self):
-        return self._age 
-    
+        return self._age
+
     @age.setter
     def age(self, value):
-        self._age = value 
+        self._age = value
 
     @property
     def birth(self):
-        return 200- self._age
+        return 200 - self._age
 
     @staticmethod
     def func_st():
-        print('[%s] - '% (sys._getframe().f_lineno),"in staticmethod function...") 
+        print('[%s] - ' % (sys._getframe().f_lineno), "in staticmethod function...")
         pass
 
     @classmethod
     def func_cls(cls, cc):
-        cls.ca = cc 
+        cls.ca = cc
         print("set class ca value is : %s" % cc)
         pass
 
@@ -54,10 +55,11 @@ class A(object):
             "slef.ca： %s" % self.ca,
             "slef.cl： %s" % self.cl,
             "slef.a： %s" % self.a,
-            end='\n', 
+            end='\n',
             sep=" ||"
         )
         pass
+
 
 obj = A()
 # obj.out()
@@ -78,10 +80,3 @@ except AttributeError as e:
     print("错误的属性!")
 
 # print("obj.birth : %s" % obj.birth)
-
-
-
-
-
-    
-    

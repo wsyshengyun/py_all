@@ -6,8 +6,6 @@
 
 import pymongo
 # from ..logger.log import logger
-from demopy.logger.log import logger
-
 
 
 # 连接数据库
@@ -15,11 +13,12 @@ from demopy.logger.log import logger
 def connect():
     myclient = pymongo.MongoClient(host='localhost', port=27017)
     # myclient = pymongo.MongoClient(host='127.0.0.1', port=27017)
-    db = myclient['dbtest']   
+    db = myclient['dbtest']
     # db = myclient.dbtest
     my_set = db['t1']
 
-data = {'name' : 'zhangsan', 'age':18}
+
+data = {'name': 'zhangsan', 'age': 18}
 
 flg_insert = False
 if flg_insert:
@@ -28,9 +27,9 @@ if flg_insert:
 
 # insert many 
 users = [
-    {'name':'zhangsan1' ,'age':19}, 
-    {'name':'lisi', 'age':20}, 
-    {'name':'dabao' ,'age':22}, 
+    {'name': 'zhangsan1', 'age': 19},
+    {'name': 'lisi', 'age': 20},
+    {'name': 'dabao', 'age': 22},
 ]
 
 if flg_insert:
@@ -42,36 +41,45 @@ if flg_insert:
 def output1():
     for i in my_set.find():
         print(i)
-    for i in my_set.find({'name':'zhangsan'}):
+    for i in my_set.find({'name': 'zhangsan'}):
         print(i)
     print("-" * 30)
-    print(my_set.find_one({'name':'zhangsan'}))
+    print(my_set.find_one({'name': 'zhangsan'}))
+
 
 # 2020年10月27日
-from student import one_student, many_students 
+from student import one_student, many_students
+
+
 def insert_2():
-    my_set.insert_one(one_student) 
+    my_set.insert_one(one_student)
     my_set.insert_many(many_students)
     pass
+
 
 # insert_2()
 def print_results(result):
     for ele in result:
         print(ele)
+
+
 def output_2():
     result = my_set.find_one()
     print(result)
 
+
 def find_all_2():
-    condition = {'male':'man'}
+    condition = {'male': 'man'}
     result = my_set.find(condition)
     print_results(result)
 
 
 from bson import ObjectId
+
+
 def find_from_id():
     condition = {'_id': ObjectId("5f980f1cbdf30eee28d323db")}
-    result = my_set.find_one(condition) 
+    result = my_set.find_one(condition)
     print(result)
 
 
@@ -81,20 +89,24 @@ def sort_age(results):
     resultsed = results.sort(*condition)
     return resultsed
 
+
 def find_1():
-    condition = {'age':{'$gte':22}}
+    condition = {'age': {'$gte': 22}}
     result = my_set.find(condition)
     result = sort_age(result)
     print_results(result)
 
+
 def find_2():
-    condition = {'name':{'$regex':'^d.*'}}
-    condition = {'name':{'$regex':'.*a.*'}}
-    result = my_set.find(condition) 
+    condition = {'name': {'$regex': '^d.*'}}
+    condition = {'name': {'$regex': '.*a.*'}}
+    result = my_set.find(condition)
     print_results(result)
 
 
 find_2()
+
+
 # find_from_id()
 
 # output_2() 
@@ -102,10 +114,5 @@ find_2()
 
 
 def main():
-    
-    find_2() 
+    find_2()
     pass
-
-
-
-

@@ -1,7 +1,6 @@
 # codeing:utf8
 import functools
 from typing import Any
-import functools
 
 '''
  

@@ -36,9 +36,9 @@ def reload_from_sys():
     obj = m_reload.MyModule()
     print(obj)
 
+
 def reload_5():
     """ !!!测试不通过"""
     m_reload.__spec__.load_module()
     obj = m_reload.MyModule()
     print(obj)
-

@@ -43,12 +43,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(D, self.D)
 
         # 字典合并来创建新的字典
-        D1 = {'a':1, 'b':2}
-        D2 = {'b':3, 'd':4}
+        D1 = {'a': 1, 'b': 2}
+        D2 = {'b': 3, 'd': 4}
         D = {**D1, **D2}  # 解包
-        self.assertEqual(D, {'a':1, 'b':3, 'd':4})  # !!! 'b':2被覆盖
+        self.assertEqual(D, {'a': 1, 'b': 3, 'd': 4})  # !!! 'b':2被覆盖
         D = {**D2, **D1}
-        self.assertEqual(D, {'a':1, 'b':2, 'd':4})  # 后面的覆盖前面的
+        self.assertEqual(D, {'a': 1, 'b': 2, 'd': 4})  # 后面的覆盖前面的
 
     def test_setdefault(self):
         """
@@ -69,7 +69,7 @@ class MyTestCase(unittest.TestCase):
         #
         D = self.D.copy()
         result_if_exist_key = D.setdefault('a', 11)
-        self.assertEqual(D, {'a':1, 'b':2, 'c':3})
+        self.assertEqual(D, {'a': 1, 'b': 2, 'c': 3})
         self.assertEqual(result_if_exist_key, 1)
 
         result_if_not_exist_key = D.setdefault('d', 4)
@@ -78,7 +78,7 @@ class MyTestCase(unittest.TestCase):
         # 与setdefault相反,存在键值,直接覆盖
         D = self.D.copy()
         D['a'] = 2
-        self.assertEqual(D, {'a':2, 'b':2, 'c':3})
+        self.assertEqual(D, {'a': 2, 'b': 2, 'c': 3})
 
     def test_dict_function(self):
         # k=v
@@ -95,7 +95,7 @@ class MyTestCase(unittest.TestCase):
         D = self.D.copy()
         D1 = {'d': 5}
         D.update(**D1)
-        self.assertEqual(D, {'a':1, 'b':2, 'c':3, 'd':5})
+        self.assertEqual(D, {'a': 1, 'b': 2, 'c': 3, 'd': 5})
 
         # 遇到相同的键,覆盖掉
         D = self.D.copy()
@@ -143,7 +143,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_some(self):
         self.assertEqual([(), ()], [(), ()])
-        D = {'a':1, 'a':2}
+        D = {'a': 1, 'a': 2}
         self.assertEqual(D, {'a': 2})
 
     def test_get(self):
@@ -159,8 +159,6 @@ class MyTestCase(unittest.TestCase):
         L.sort(key=lambda x: x[1])
         self.assertEqual(L[0], ('d', 1))
         self.assertEqual(L[-1], ('b', 11))
-
-
 
 
 if __name__ == '__main__':

@@ -92,10 +92,6 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(tools[2].name, 'level')
         self.assertEqual(tools[3].name, 'screwdriver')
 
-
-
-
-
     def test_insert_and_copy(self):
         L = self.L.copy()
         self.assertEqual(len(L), 5)

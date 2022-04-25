@@ -72,4 +72,3 @@ bbf = outer(5)
 bbf()
 bbd = outer(9)
 bbd()
-
