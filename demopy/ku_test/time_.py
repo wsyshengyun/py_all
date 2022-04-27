@@ -5,52 +5,68 @@
 '''
 
 import datetime as dt
-
-print("dt.MAXYEAR: {}".format(dt.MAXYEAR))
-print("dt.MINYEAR: {}".format(dt.MINYEAR))
+max_year = dt.MAXYEAR
+min_year = dt.MINYEAR
+print("dt.MAXYEAR: {}".format(max_year))
+print("dt.MINYEAR: {}".format(min_year))
 
 
 def main():
-    atoday = dt.date.today()
-    print("today is :{}".format(atoday))
-    print("atoday.year:{}, atoday.month:{}, atoday.day:{}".format(atoday.year, atoday.month, atoday.day))
-    print("atoday.__getattribute__('year') : {}".format(atoday.__getattribute__('year')))
+    today = dt.date.today()
+    print("today is :{}".format(today))
+    year = today.year
+    month = today.month
+    day = today.day
+    print("atoday.year:{}, atoday.month:{}, atoday.day:{}".format(year, month, day))
+    get_year = today.__getattribute__('year')
+    # get_year1 = today['year']
+    # assert get_year == get_year1
+    print("atoday.__getattribute__('year') : {}".format(get_year))
 
     bday = dt.date(2021, 9, 30)
-    print(atoday > bday)
+    print(today > bday)
 
-    print("atoday.isocalendar() : {}".format(atoday.isocalendar()))
-    print("atoday.isoformat() :{}".format(atoday.isoformat()))
-    print("atoday.weekday() :{}".format(atoday.weekday()))
+    isocalendar = today.isocalendar()
+    isoformat = today.isoformat()
+    weekday = today.weekday()
 
-    print("atoday.timetuple() :{}".format(atoday.timetuple()))
-    atoday_timetuple = atoday.timetuple()
-    print("atoday_timetuple.tm_year :{}".format(atoday_timetuple.tm_year))
-    print("atoday_timetuple.tm_mon:{}".format(atoday_timetuple.tm_mon))
-    print("atoday_timetuple.tm_mday:{}".format(atoday_timetuple.tm_mday))
+    print("atoday.isocalendar() : {}".format(isocalendar))
+    print("atoday.isoformat() :{}".format(isoformat))
+    print("atoday.weekday() :{}".format(weekday))
 
-    print("公元公历开台到现在的天数 :{}".format(atoday.toordinal()))
+    timetuple = today.timetuple()
+    print("atoday.timetuple() :{}".format(timetuple))
+    print("atoday_timetuple.tm_year :{}".format(timetuple.tm_year))
+    print("atoday_timetuple.tm_mon:{}".format(timetuple.tm_mon))
+    print("atoday_timetuple.tm_mday:{}".format(timetuple.tm_mday))
+
+    toordinal = today.toordinal()
+    print("公元公历开台到现在的天数 :{}".format(toordinal))
 
     # replace(...)
-    b = atoday.replace(2017, 2, 28)
-    print("atoday :{}".format(atoday))
+    b = today.replace(2017, 2, 28)
+    print("atoday :{}".format(today))
     print("b :{}".format(b))
 
-    print("dt.date.resolution 日期的最小单位 :{}".format(dt.date.resolution))
-    print("dt.timedelta(1) :{}".format(dt.timedelta(1)))
+    units = dt.date.resolution
+    print("dt.date.resolution 日期的最小单位 :{}".format(units))
+    date1 = dt.timedelta(1)
+    print("dt.timedelta(1) :{}".format(date1))
 
     import time
-    print("时间戮 :{}".format(time.time()))
-    print("根据时间戮返回一个日期对象 :{}".format(dt.date.fromtimestamp(time.time())))
+    now = time.time()
+    date_obj = dt.date.fromtimestamp(now)
+    print("时间戮 :{}".format(now))
+    print("根据时间戮返回一个日期对象 :{}".format(date_obj))
 
-    print("dt.date.max最大日期 :{}".format(dt.date.max))
-    print("dt.date.min最小日期 :{}".format(dt.date.min))
+    max = dt.date.max
+    min = dt.date.min
+    print("dt.date.max最大日期 :{}".format(max))
+    print("dt.date.min最小日期 :{}".format(min))
 
     print("日期的格式化输出")
-    print("atoday.strftime(\"%Y%m%d\") :{}".format(atoday.strftime("%Y%m%d")))
-    # print(" :{}".format())
-    # print(" :{}".format())
-    # print(" :{}".format())
+    strdate = today.strftime("%Y%m%d")
+    print("atoday.strftime(\"%Y%m%d\") :{}".format(strdate))
 
     pass
 
