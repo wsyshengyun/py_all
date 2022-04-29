@@ -9,6 +9,7 @@ class Test(object):
     c = 0  # 不会调用__setattr__
 
     def __init__(self, a=0):
+        print("__init__")
         self.a = a  # 会调用__setattr__
         self.b = 6  # 会调用__setattr__
         self.L = []  # 会调用__setattr__
@@ -31,30 +32,38 @@ class Test(object):
         item: 被访问的变量的字符串;  比如 'a'
         """
         print("__getattr__")
+        return self.__dict__[item]
         pass
 
     def __set__(self, instance, value):
         """ 描述符相关"""
+        print('__set__')
         pass
 
     def __get__(self, instance, owner):
         """ 描述符相关"""
+        print('__get__')
         pass
 
     def __getitem__(self, item):
         # test['a'] 时被调用
+        print('__getitem__')
         pass
 
     def __setitem__(self, key, value):
+        print('__setitiiem__')
         pass
 
     def __call__(self, *args, **kwargs):
+        print('__call__')
         pass
 
     def __iter__(self):
+        print('__iter__')
         pass
 
     def __next__(self):
+        print('__next__')
         pass
 
 
