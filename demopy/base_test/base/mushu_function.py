@@ -46,8 +46,13 @@ class Test(object):
         pass
 
     def __getitem__(self, item):
+        """
+        item is 成员的名字; 例如次类的'a', 和'b', 注意是字符串
+        形式是 obj['a']   obj[成员名字]
+
+        """
         # test['a'] 时被调用
-        print('__getitem__')
+        print('__getitem__', 'item is ', item)
         pass
 
     def __setitem__(self, key, value):
@@ -66,6 +71,14 @@ class Test(object):
         print('__next__')
         pass
 
+    def __contains__(self, item):
+        print('__contains__')
+        return True
+        pass
+
+
+    def is_in_self(self):
+        print('a is in self: {}'.format('a' in self))
 
 test = Test(11)
 # test.a
@@ -75,4 +88,6 @@ test = Test(11)
 # Test.c = 2
 # test.e = 10
 # test['a'] = 10
-test['b']
+# test['b']
+# test['bb']    # 访问一个不存在的名字呢?
+test.is_in_self()

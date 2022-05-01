@@ -29,6 +29,21 @@ user_dic = json.loads(content)
 # print(user_dic)
 f.close()
 
+
+def translate_obj_from_json(values):
+    val = json.loads(values)
+    print(val)
+    return val
+
+
+values = '1'
+val = translate_obj_from_json(values)
+values = '"nihao"'  # 不能写成"nihao" 或者'nihao'
+val = translate_obj_from_json(values)
+values = "1"
+val = translate_obj_from_json(values)
+pass
+
 # =====================================load方法 =======================================
 print('*' * 50)
 f = open(path, encoding='utf-8')
@@ -53,6 +68,42 @@ path_dump = './dump.json'
 with open(path_dump, 'w', encoding='utf-8') as f:
     f.write(res2)
 
+
+def dump_to_tsr(obj):
+    tt = json.dumps(obj)
+    print(tt)
+    return tt
+
+
+obj = 'nihao'
+val = dump_to_tsr(obj)
+obj = '1'
+val = dump_to_tsr(obj)
+obj = 222
+val = dump_to_tsr(obj)
+
 # =====================================字典转换为json=======================================
 f = open(path_dump, 'w', encoding='utf-8')
 json.dump(stus, f, indent=8, ensure_ascii=False)
+
+
+def dump_class_obj():
+    class A:
+        def __init__(self, a=1):
+            """ """
+            print("__init__")
+            self.a = a
+
+    obj = A()
+    tsr = json.dumps(obj)
+    print(tsr)
+
+
+# dump_class_obj()
+pass
+
+print(
+    '-'*50
+)
+from demopy.base_test.base import test_snip
+print(dir(test_snip))
