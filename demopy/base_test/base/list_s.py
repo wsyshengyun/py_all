@@ -1,8 +1,5 @@
 # coding:utf8
 
-"""
-list 的使用
-"""
 # 创建list
 L = [1, 2, 3, 4, 5]
 l2 = [None] * 5
