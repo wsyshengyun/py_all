@@ -61,11 +61,12 @@ bl = 'x' in lit
 index = lit.index('x')
 
 # 排序或反转列表
-# return None
+# None <==
 lit.reverse()
 
 
 # 直接更改了原列表
+#
 # 有三个默认 参数cmp=None,key=None,reverse=False
 # 如果元素的类型不一致，不能排序
 
@@ -93,7 +94,10 @@ new_lit = sorted(lit)
 id_new_lit = id(new_lit)
 id_lit = id(lit)
 
+#
 # 切片操作
+#
+
 lit = L.copy()
 lit.insert(0, 0)
 v1 = lit[::]  # lit 一样
