@@ -7,7 +7,9 @@ a = 10
 
 
 def foo():
-    """ """
+    """
+    初始化foo的时候,已经与 global a  绑定了
+    """
     print("a is {}".format(a))
 
 
