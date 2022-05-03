@@ -64,6 +64,9 @@ class MyTestCase(unittest.TestCase):
         result = self.match('\D*', self.tsr_china)
         self.assertEqual(result, "人间大炮")
 
+        result1 = self.match(r'\w+', self.tsr_china)
+        self.assertEqual(result, "人间大炮")
+
         # 把整个字符串匹配完了
         _ = self.match('\D*.\D*', self.tsr_china)
         # result_if_none is "" 字符串
@@ -101,18 +104,9 @@ class MyTestCase(unittest.TestCase):
         assert self.match('\s', '\n')
         assert self.match('\s', '\r')
         assert self.match('\s', ' ')
+        assert self.match('\s', '\f')  # 换页
+        assert self.match('\s', '\v')
         # assert self.match('\s', '')
-
-        # tsr = 'abcdefghijklmnopqrstuvwsyz'
-        # tsr_upper = tsr.upper()
-        # assert len(list(tsr)) == 26
-        # for cc in list(tsr):
-        #     mat_str = r"\\" + cc
-        #     try:
-        #         assert self.match('\s', mat_str)
-        #     except AssertionError:
-        #         print(cc)
-        #     pass
 
         #
         # \w [a-z A-Z 0-9 - ] 单词类字符
@@ -123,8 +117,15 @@ class MyTestCase(unittest.TestCase):
         assert self.match('\w', 'A')
         assert self.match('\w', 'Z')
         assert self.match('\w', '0')
-        assert self.match('\w', '1')
         assert self.match('\w', '9')
+        # assert self.match('\w', '-')
+        # assert self.match('\w', '@')
+        assert self.match('\w', '中')
+        china = "中"
+        utf = china.encode('utf8')
+        # TypeError: cannot use a string pattern on a bytes-like object
+        # assert self.match('\w', utf)
+
         #
         # \W  非\w
         #
@@ -233,8 +234,10 @@ class MyTestCase(unittest.TestCase):
         #
         # |
         #
-        assert self.match('[1-9]?\d|100', '888')   # 88
-        assert self.match('[1-9]?\d|100', '088')  # 0
+        assert self.match('[1-9]?\d|100', '798')   # 79
+        result1 = self.match(r'[1-9]??\d|100', '789')
+        assert result1 == '7'
+        assert self.match('[1-9]?\d|100', '058')  # 0
         assert self.match('[1-9]?\d|\w\d\d', 'a08')  # a08
         #
         # ()
@@ -247,7 +250,7 @@ class MyTestCase(unittest.TestCase):
         #
         # \
         #
-        # r'' r要加上 不然要报错
+        # r'' r要加上 不然要报错, 因为里面有\w
         ret = re.match(r'<([a-zA-Z]*)>\w*</\1>', '<html>hh</html>')
         r4 = ret.group()
         r5 = ret.group(1)
@@ -259,6 +262,7 @@ class MyTestCase(unittest.TestCase):
 
         htmls = "<html><h1>www.baidu.com</h1></html>"
         pattern = r'<(?P<name1>\w*)><(?P<name2>\w*)>.*</(?P=name2)></(?P=name1)>'
+
         # pattern = r'<(\w*?P<name1>)><(?P<name2>\w*)>.*</(?P=name2)></(?P=name1)>'
         # 此处错误 上面 > \w* 要放在后面, ?P放在前面
 
@@ -328,6 +332,7 @@ class MyTestCase(unittest.TestCase):
         """
         line = 'Cats are smarter than dogs'
         pattern = r'(.*?) are (.*?) .*'
+        pattern = r'(.*) are (.*) .*'
         search_obj = re.search(pattern, line, re.M | re.I)
         if search_obj:
             v1 = search_obj.group()
@@ -423,11 +428,12 @@ class MyTestCase(unittest.TestCase):
         Pattern对象 < = compile(pattern, flags)
 
         re.I  忽略大小写
-        re.L  表示特殊字符集\w \W \b \B \s \S依赖于当期环境
         re.M  多行模式
         re.S    . 包含换行符在内的任意字符
-        re.U    表示特殊字符集\w \W \b \B \d \D \s \S 依赖于Unicode字符属性数据库
         re.X 为了增加可读性,忽略空格和#后面的注释
+
+        re.L  表示特殊字符集\w \W \b \B \s \S依赖于当期环境
+        re.U    表示特殊字符集\w \W \b \B \d \D \s \S 依赖于Unicode字符属性数据库
 
         匹配成功后返回一个Match对象, 它的方法有
         group([1, 2, 3, ...])
@@ -452,8 +458,15 @@ class MyTestCase(unittest.TestCase):
         """
         v1 = re.match(r"aa(\d+)", 'aa2343ddd').group(1)   # 2343
         v2 = re.match(r"aa(\d+?)", 'aa2343ddd').group(1)   # 2
+        v22 = re.match(r"aa(\d??)", 'aa2343ddd').group(1)   # ''
         v3 = re.match(r"aa(\d+)ddd", 'aa2343ddd').group(1)   # 2343
         v4 = re.match(r"aa(\d+?)ddd", 'aa2343ddd').group(1)   # 2343
+        # 中间能匹配完么? 不能匹配完结果就是None
+        v5 = re.match(r"aa(\d{2})ddd", 'aa2343ddd')   # None
+        # 后限定ddd后面还有一个ddd, 如果贪婪模式就匹配到后面那个ddd
+        v6 = re.match(r"aa(\w+)ddd", 'aa2343ddd909ddd').group(1)   # 2343ddd909
+        # 如果是懒惰模式就匹配到第一个ddd
+        v7 = re.match(r"aa(\w+?)ddd", 'aa2343ddd909ddd').group(1)   # 2343
         pass
 
 
