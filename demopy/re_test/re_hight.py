@@ -11,59 +11,46 @@ import re
 ^	匹配字符串的开始
 $	匹配字符串的结束
 
-
-
 """
 
-#
-# 限制数字的个数
-#
 
-# 可以匹配 至少 4个连续的数字;
-tsr1 = r"\d{4}"
-# 匹配4个连续的数字
-tsr = r"^\d{4}$"
+# \|\|\|\|\|\|\|\|\|\|\|\|\|正整数|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|
 
-# \|\|\|\|\|\|\|\|\|\|\|\|\|匹配0-255之间的数字|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|
-
-# 字符转义
-#
-#
-# 重复
-#
-#
-# 字符类
-#
-#
-# 分支条件
-#
-#
-# 分组
-#
-#
-# 反义
-#
-#
-# 反向引用
-#
-#
-# 零宽断言
-#
-#
-# 负向零宽断言
-#
-#
-# 注释
-#
-#
-# 贪婪与懒惰
-#
-#
-# 处理选项
-#
-#
-# 平衡组/递归匹配
-#
+def match(pattern, tsr):
+    return re.match(pattern, tsr)
 
 
+def match_group_iter(pattern, tsr):
+    result: re.Match = match(pattern, tsr)
+    if result.lastindex:
+        for i in range(1, result.lastindex+1):
+            yield result.group(i)
 
+
+def match_group_list(pattern, tsr):
+    iter = match_group_iter(pattern, tsr)
+    return list(iter) if iter else None
+
+
+pattern = r"^[1-9]\d*$"
+assert match(pattern, '899')
+
+ret1 = re.match(r"\w*?(\d+)\w+?(\d+)\w+", 'aa00bb11cc')
+# ret1 = re.match(r"\w*?\d+\w+?\d+\w+", 'aa00bb11cc')
+res = match_group_list(r"\w*?(\d+)\w+?(\d+)\w+", 'aa00bb11cc')
+print(res)
+# v0 = ret1.group(0)
+# v1 = ret1.group(1)
+# v2 = ret1.group(2)
+
+#
+# 匹配中文
+#
+pstr = r'[\u4e00-\u9fa5]{5}'  # # 匹配了5个汉字
+pstr = r'[\u4e00-\u9fa5]+'  # # 贪婪匹配
+pstr = r'[\u4e00-\u9fa5]*'  # # todo 为什么是惰性匹配
+ret = re.search(pstr, "aa123我是中国人")
+print(ret.group())
+
+
+pass

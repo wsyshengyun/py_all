@@ -285,6 +285,17 @@ class MyTestCase(unittest.TestCase):
             # r9 = ret.group(3)
             # r10 = ret.group(4)
             r11 = ret.groupdict()
+
+        # 非获取匹配
+        pattern = r"industr(?:y|ies)"   # # y:ies可以看成一个整体
+        ret = re.match(pattern, 'industries')
+        assert ret
+        # v1 = ret.group()
+        # v2 = ret.group(1)
+        # v3 = ret.group(2)
+        ret1 = re.match(r"(z|f)ood", 'food')
+        assert ret1.group(1) == 'f'
+        assert ret1.group() == 'food'
         pass
 
     def test_match(self):
