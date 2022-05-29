@@ -23,17 +23,24 @@ def socket_service():
 
 
 def deal_data(conn, addr):
-    print('Accept new connection from {}'.format(addr))
-    conn.send('Hi, Welcome to the seriver!'.encode())
+    print('服务端: 我与{} 建立一个新的连接'.format(addr))
+    conn.send('服务端说: 欢迎!'.encode())
 
     while True:
-        data = conn.recv(2)
-        print('{} client send data is {}'.format(addr, data.decode()))
+        # 服务端 接受数据
+        data = conn.recv(1024)
+        # 数据解码后再打印输出
+        print('服务端: 接收自{} 的数据:{}'.format(addr, data.decode()))
         time.sleep(1)
+        # 如果原数据为exit则退出此循环
         if data == b'exit' or not data:
-            conn.send(bytes('Connection closed!', 'UTF-8'))
+            conn.send(bytes('数据>来自服务端的语言: 关闭把', 'UTF-8'))
             break
-        conn.send(bytes('Hello, {}'.format(data), 'UTF-8'))
+        # 服务端发送数据到客户端 data的格式为 bytes~
+        send_str = '服务端: 我接收了你的数据,数据将原路返回: '.format(data)
+        # conn.send(bytes(send_str, 'UTF-8'))
+        conn.send(data)
+    # 当退出循环的时候连接关闭
     conn.close()
 
 

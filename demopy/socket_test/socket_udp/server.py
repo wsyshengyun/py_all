@@ -10,4 +10,4 @@ while 1:
     data, address = sock.recvfrom(4096)
     print(data.decode('utf8'), address)
     if data:
-        sent = sock.sendto('已经接受你发来的消息'.encode('utf8', address))
+        sent = sock.sendto('已经接受你发来的消息'.encode('utf8'), address)
