@@ -1,5 +1,6 @@
 # coding:utf8
 
+# TODO 结果呢?是否会自动继承父类的静态方法呢?
 class A:
     @staticmethod
     def foo_static():
