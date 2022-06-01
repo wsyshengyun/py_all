@@ -73,10 +73,15 @@ db = {'d': 4, 'e': 5}
 dx.update(db, f=6, g=7)
 assert dx.get('d') == 4
 assert dx.get('g') == 7
-#  =========================== end update
 
 # 字典的用途
 temp = '姓名:%(name)s,年龄:%(age)3.0f,籍贯:%(location)s'
 
 msg = {'name': 'JoJ', 'age': 23, 'location': '海拉尔群岛'}
 print(temp % msg)
+
+# 字典可以排序,在python3.6之后,但是之前不可以排序
+dict_1 = {str(i): i for i in range(5)}
+print(dict_1)
+
+# 在运行效率上，{} 会比 dict() 快三倍左右

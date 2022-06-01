@@ -1,5 +1,6 @@
 # coding:utf8 
 
+
 class Quantity(object):
     def __init__(self, name):
         self.storage_name = name

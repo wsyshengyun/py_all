@@ -17,24 +17,24 @@ assert lit[1] == 'insert at 1'
 
 # 扩展列表
 # list.extend(iterable) 参数为iterable类型
-# 在原来的列表上扩展；
-# 输出：为None
-# 添加的列表的元素在最后面；
-lit = ['a', 'b']
+# 在原来的列表上扩展, 输出：为None ,添加的列表的元素在最后面；
 # lit = lit.extend(['x', 'y', 'z'])  错误, lit.extend后返回了自己
-reslut = lit.extend(['x', 'y', 'z'])
-# ['a', 'b', 'x', 'y', 'z', 'm', 'n', 'k']
+lit = ['a', 'b']
+lit.extend(['x', 'y', 'z'])
 lit.extend('mnk')
+lit.extend((1,2,3))
+lit.extend({11, 22, 33})
+# list + list
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+list3 = [7, 8, 9]
+list4 = list1 + list2 + list3
 
-#
-# 删除元素
-# 
 lit = L.copy()
-
+# 删除元素
 # pop(index) => element
 # 弹出第1个元素
 ele1 = lit.pop(0)
-
 # 弹出最后一个元素
 ele2 = lit.pop()
 
@@ -63,7 +63,10 @@ index = lit.index('x')
 # 排序或反转列表
 # None <==
 lit.reverse()
-
+lit.sort()  # 如果元素的类型不一样,会报错
+lit = [5, 4, 3, 6, 9, 1]
+lit.sort()
+new_list = sorted(lit, reverse=True)
 
 # 直接更改了原列表
 #
@@ -77,46 +80,53 @@ lit.reverse()
 #             lit.remove(ele)
 #         pass
 
-def list_remove_not_int(lit):
+
+def list_remove_not_int(l):
     """
     todo 列表里面删除一些元素,还有哪些方法呢?
     """
-    del_lit = [ele for ele in lit if not isinstance(ele, int)]
+    del_lit = [ele for ele in l if not isinstance(ele, int)]
     for ele in del_lit:
-        lit.remove(ele)
+        l.remove(ele)
 
 
 list_remove_not_int(lit)
-lit.sort()
 
-new_lit = sorted(lit)
-# 两个的身份不一样的
-id_new_lit = id(new_lit)
-id_lit = id(lit)
-
-#
 # 切片操作
 #
 
 lit = L.copy()
 lit.insert(0, 0)
-v1 = lit[::]  # lit 一样
-
+l1 = lit[::]  # lit 一样
 # id一样么, 答案是不一样的
 id1 = id(lit)
-id2 = id(v1)
+id2 = id(l1)
+# L[:]
+l2 = lit[:]
+print(l2)  # == lit
+print(id(lit) == id(l2))  # Flase
 
-v2 = lit[::-1]  # lit的倒序
-# [0, 1]
-v3 = lit[:2]
-# [2, 3, 4, 5]
-v4 = lit[2:]
-# [4, 5]
-v5 = lit[-2:]
-# [0, 1, 2, 3]
-v6 = lit[:-2]
+lit = [0, 1, 2, 3, 4, 5]
+list2 = lit[::-1]  # lit的倒序
+# L[a:b] => [a, b)  左闭右开
+v3 = lit[:2]  # [0, 1]
+v4 = lit[2:]  # [2, 3, 4, 5]
+# 等效于 lit[-2+len:] => lit[4:]
+# 也等效于: 从尾部向前2个元素
+v5 = lit[-2:]  # [4, 5]
+# 等效于: 除了尾部的两个元素之外的元素
+v6 = lit[:-2]  # [0, 1, 2, 3]
+v7 = lit[:0]  # []
+v8 = lit[:1]  # [0]
+
 
 # 切片增加步长
+a = [1, 2]
+b = [3, 4]
+c = [5, 6]
+d = sum((a, b, c), [])
+# d = sum([a, b, c])  报错
+assert d == [1, 2, 3, 4, 5, 6]
+# s1 = sum(['a', 'b', 'c', 'e'], '') 报错
 
-pass
 
