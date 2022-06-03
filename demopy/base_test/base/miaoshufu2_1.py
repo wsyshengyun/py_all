@@ -1,11 +1,11 @@
 # coding:utf8
 
-import project.base.miaoshufu2 as model
+from demopy.base_test.base import miaoshufu2 as model
 
 
 class LineItem:
-    description = model.NonBlank()
-    weight = model.Quantity()
+    description = model.NonBlank()  # 去掉空格
+    weight = model.Quantity()  # 描述符 值不能小于零
     price = model.Quantity()
 
     def __init__(self, description, weight, price):
