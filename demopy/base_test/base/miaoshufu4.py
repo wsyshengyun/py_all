@@ -1,5 +1,6 @@
 # coding:utf8
 
+
 class Miao(object):
 
     def __init__(self, name):
