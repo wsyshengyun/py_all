@@ -301,7 +301,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(L[5:], [5, 6, 7])  # 包括起点
         self.assertEqual(L[5: len(L)], L[5:])
         self.assertEqual(L[:], L)
-        # 负数切片
+        # 负数切片, 负数总可以用 负数+列表长度 替换掉， 不管它在：的左边还是右边
         self.assertEqual(L[-3:], [5, 6, 7])
         self.assertEqual(L[5:-1], [5, 6])
         self.assertEqual(L[-3:-1], [5, 6])

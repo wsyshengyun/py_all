@@ -3,22 +3,17 @@
 # 创建list
 L = [1, 2, 3, 4, 5]
 l2 = [None] * 5
+l5 = [i for i in range(5)]  # 列表推导式
 l3 = list('abc')
+l33 = list(range(5))
 l4 = 'a b c'.split(" ")
-# 列表推导式
-l5 = [i for i in range(5)]
 
 # 添加元素
 # None<= insert(index)  在index的前面添加元素
-l = [1, 2, 3, 4, 1]
-lit = l.copy()
-lit.insert(1, 'insert at 1')  # 新添加的元素的位置在 索引1处，即在位置0后添加新元素
-assert lit[1] == 'insert at 1'
+l4.insert(1, 'element at 1 pos')  # 新添加的元素的位置在 索引1处，即在位置0后添加新元素
 
 # 扩展列表
-# list.extend(iterable) 参数为iterable类型
-# 在原来的列表上扩展, 输出：为None ,添加的列表的元素在最后面；
-# lit = lit.extend(['x', 'y', 'z'])  错误, lit.extend后返回了自己
+# list.extend(iterable) 参数为iterable类型, 在原来的列表上扩展, 输出：为None ,添加的列表的元素在最后面；
 lit = ['a', 'b']
 lit.extend(['x', 'y', 'z'])
 lit.extend('mnk')
@@ -30,29 +25,18 @@ list2 = [4, 5, 6]
 list3 = [7, 8, 9]
 list4 = list1 + list2 + list3
 
-lit = L.copy()
 # 删除元素
 # pop(index) => element
-# 弹出第1个元素
-ele1 = lit.pop(0)
-# 弹出最后一个元素
-ele2 = lit.pop()
+ele1 = list4.pop(0)  # 弹出第1个元素
+ele2 = lit.pop()  # 弹出最后一个元素
 
 # None <= remove(element)
-# 删除元素1，是值不是索引；如果有删除的元素有重复，则只会删除最前面的；
-# lit.remove(1)  元素1不存在,报错
-lit = L.copy()
-lit.remove(1)
+list4.remove(1) # 元素1不存在,报错 # 删除元素1，是值不是索引；如果有删除的元素有重复，则只会删除最前面的；
 
-# 删除索引为2的元素，也即删除从前到后第3个元素
-# lit[index] 返回的是第 index+1 个元素
-del lit[2]
+del lit[2] # 删除索引为2的元素，也即删除从前到后第3个元素
 
 # 统计元素的个数方式
-lit = L.copy()
-lit.append('x')
-lit.append('x')
-count_ = lit.count('x')  # 2
+count_ = list4.count(1)
 
 #  in 和 not in
 bl = 'x' in lit
@@ -62,28 +46,18 @@ index = lit.index('x')
 
 # 排序或反转列表
 # None <==
-lit.reverse()
 lit.sort()  # 如果元素的类型不一样,会报错
 lit = [5, 4, 3, 6, 9, 1]
+lit.reverse()
 lit.sort()
 new_list = sorted(lit, reverse=True)
-
-# 直接更改了原列表
-#
-# 有三个默认 参数cmp=None,key=None,reverse=False
-# 如果元素的类型不一致，不能排序
-
-#  下面不能完全删除连续的字符元素
-# def list_remove_not_int(lit):
-#     for ele in lit:
-#         if not isinstance(ele, int):
-#             lit.remove(ele)
-#         pass
 
 
 def list_remove_not_int(l):
     """
-    todo 列表里面删除一些元素,还有哪些方法呢?
+    在列表里面循环按条件删除一些元素在步骤为：
+    1， 找出这些元素，放在一个新的列表里面
+    2， 循环新的列表，依次在原列表里面删除这些元素。
     """
     del_lit = [ele for ele in l if not isinstance(ele, int)]
     for ele in del_lit:
