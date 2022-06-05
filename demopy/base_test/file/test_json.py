@@ -83,6 +83,6 @@ class MyJsonTest(unittest.TestCase):
         pass
 
     def test_convert_file(self):
-        # TODO 如何将一个txt文件转换为utf8格式??
+        # TODO SS 如何将一个txt文件转换为utf8格式??
         path = 'project/log/manyline.json'
         pass
