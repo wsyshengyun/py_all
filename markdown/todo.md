@@ -62,6 +62,27 @@ yield所在的空间可以是一个循环的空间；也可以是一个可以结
 send可以可以看做是两个步骤，第一，发送给生成器一个值 第二，next一下生成器；
    
 
+### 2022.06.08 
+#### english
+> memento n:纪念品， 令人回忆的东西 
+>weakref 弱引用
+weak 弱的
+vector 向量 vector vector 
+store 店铺 store store 
+special spcial special special 特别的
+risk 风险 risk risk 
+资源 
+relative 相对的 relative relative relative 
+建议的 proposed proposed 
+平台 platform platform 
+可选的 optional optional optional  optional optional
+平行 parallel 对比 parallel  parallel parallel parallel 
+参数 parameter  parameter parameter parameter parameter parameter
+表演 perform perform  perform perform perform 
+坚持 persist persist  persist persist persist persist 
+picklable  picklabel 
+泡菜 pickle pickle pickle pickle pickle pickle pickle pickle  
+actually actually 实际上  actually actually actually actually 
 
 ### 2022.06.03 基础复习 列表，字典
 

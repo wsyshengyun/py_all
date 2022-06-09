@@ -1,6 +1,7 @@
 # coding:utf8
 """
 target: __get__
+todo small
 ???什么时候调用__get__, 难道只有当用作描述符的时候吗？
 english
 practise : 练习， 实践
