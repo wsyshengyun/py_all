@@ -40,6 +40,9 @@ dx.update(db)  # 字典参数
 dx.update(f=6)  # 关键字参数
 dx.update(db, f=6, g=7)  # 混合参数
 assert dx.get('f') == 6
+print(dx)
+dx.update(f=66)
+print(dx)
 
 
 # 字典的用途

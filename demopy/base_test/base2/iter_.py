@@ -1,5 +1,6 @@
 # coding:utf8
-# from collections import Iterator   # collections在python3.9已经停止使用了
+from collections import Iterator, Iterable
+# collections在python3.9已经停止使用了
 
 
 def test1():
@@ -17,19 +18,23 @@ def test1():
 
     obj = A()
     obj.lit = [1, 2, 3, 4, 5, 6]
-    ltt = [3, 4, 5, 6, 7]
+
     dit = {'a': 1, 'b': 2, 'c': 3}
     obj.o = dit
+
     it = iter(obj)
+    print("is Iterable: {}".format(isinstance(it, Iterable)))
+    print("is Iterator: {}".format(isinstance(it, Iterator)))
+
     # it = obj.__iter__()
     # for k, v in it:
     #     print(k, v)
-    print(next(it))
-    print(next(it))
-    print(next(it))
+    print(next(it))  # 'a'
+    print(next(it))  # 'b'
+    print(next(it))  # 'c'
 
 
-# test1()
+test1()
 
 
 def test2():
