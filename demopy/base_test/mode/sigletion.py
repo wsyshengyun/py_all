@@ -18,10 +18,15 @@ class MySigletion(object):
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = object.__new__(cls)
+            print('init instance............')
         return cls._instance
 
     def __init__(self, c=5):
         self.c = c
+        print('self.c is ', self.c)
+        # self.c is  5
+        # self.c is  5
+        # 打印了两次 
         pass
 
 
@@ -45,7 +50,10 @@ print(b1 is b2)  # True
 print(s1 == b1)  # True
 print(b1)
 print(b2)
-
+    # <__main__.MySigletion object at 0x01BAC118>
+    # <__main__.MySigletion object at 0x01BAC118>
+print(type(b1), type(b2))
+    # <class '__main__.MySigletion'> <class '__main__.MySigletion'>
 
 class ASigle(MySigletion): pass
 
