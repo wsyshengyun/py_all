@@ -60,7 +60,8 @@ aiter = (i + 1 for i in L)  # 生成器
 print("aiter 的类型是: {}".format(type(aiter)))
 print("sum -> : {}".format(sum(aiter)))
 
-''' 对迭代器使用list或者tuple()函数, 也就是对其进行完全的迭代,完全的释放
+''' 
+ 对迭代器使用list或者tuple()函数, 也就是对其进行完全的迭代,完全的释放
  生成器也是迭代器
 '''
 

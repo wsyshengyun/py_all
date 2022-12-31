@@ -6,7 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/venv" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.vscode" />
     </content>
+<<<<<<< HEAD
     <orderEntry type="jdk" jdkName="Python 3.8 (pythonG)" jdkType="Python SDK" />
+=======
+    <orderEntry type="jdk" jdkName="Python 3.8 (pythonG) (2)" jdkType="Python SDK" />
+>>>>>>> dev
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">

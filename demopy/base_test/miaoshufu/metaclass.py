@@ -5,7 +5,7 @@ class Descriptor(object):
         self.label = None
 
     def __get__(self, instance, owner):
-        print('__get__.Label = %s' % self.label)
+        # print('__get__.Label = %s' % self.label)
         return instance.__dict__.get(self.label, None)
 
     def __set__(self, instance, value):
@@ -17,13 +17,18 @@ class DescriptorOwner(type):
     def __new__(cls, name, bases, attrs):
         for n, v in attrs.items():
             if isinstance(v, Descriptor):
+                # print(f"n is {n}")
+                # print(f"v is {v}")
                 v.label = n
-        return super(DescriptorOwner, cls).__new__(cls, name, bases, attrs)
+        # return super(DescriptorOwner, cls).__new__(cls, name, bases, attrs)
+        return super().__new__(cls, name, bases, attrs)
 
 
-class Foo(object):
-    __metaclass__ = DescriptorOwner
+class Foo(metaclass=DescriptorOwner):
+    # __metaclass__ = DescriptorOwner
     x = Descriptor()
+
+
 
 
 """ 
