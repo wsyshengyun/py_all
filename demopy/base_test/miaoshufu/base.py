@@ -52,5 +52,5 @@ ba.balance = 5000
 print("Balance is %s" % ba.balance)
 ba.balance = 99
 print("Balance is %s" % ba.balance)
-Balance is 5000
-Balance is 99
+# Balance is 5000
+# Balance is 99
